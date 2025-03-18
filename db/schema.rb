@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_18_104804) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_18_141544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_104804) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "diseases", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diseases_specialties", id: false, force: :cascade do |t|
+    t.bigint "specialty_id", null: false
+    t.bigint "disease_id", null: false
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -67,6 +78,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_104804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_schedules_on_doctor_id"
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
