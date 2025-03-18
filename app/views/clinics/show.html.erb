@@ -2,10 +2,16 @@
 <div class="info-1">
   <h1><%= @clinic.name %></h1>
   <p><strong><%=@clinic.address %></strong></p>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT63j2MBZNZVLxJafOEaAeFK3q6q317p_PvpQ&s" class="card-img-top p-3 rounded" alt="Burger king">
+  <%# <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT63j2MBZNZVLxJafOEaAeFK3q6q317p_PvpQ&s" class="card-img-top p-3 rounded" alt="Burger king"> %>
 </div>
 <div class="info-1">
   <h2>List of doctors</h2>
+    <% @clinic.doctors.each do |doctor| %>
+      <% profile = Profile.find(doctor.user_id) %>
+      <%= link_to doctors_path(doctor) do %>
+        <h4><%= profile.first_name + " " + profile.last_name %></h4>
+      <% end %>
+    <% end %>
 </div>
 <div class="info-1">
   <h2>Map location</h2>
@@ -13,4 +19,3 @@
 <div class="info-1">
   <h2>Clinic's description</h2>
 </div>
-
