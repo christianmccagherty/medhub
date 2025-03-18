@@ -18,13 +18,23 @@
 
 <div class="info-1">
   <h2>List of doctors</h2>
-    <% @clinic.doctors.each do |doctor| %>
-      <% profile = Profile.find(doctor.user_id) %>
-      <%= link_to doctors_path(doctor) do %>
-        <h4><%= profile.first_name + " " + profile.last_name %></h4>
-      <% end %>
-    <% end %>
+  <div class="doctor-list">
+        <% @clinic.doctors.each do |doctor| %>
+    <div class="doctor-mini-card">
+      <div class="doctor-mini-image"></div>
+        <div class="doctor-mini-info">
+          <% profile = Profile.find(doctor.user_id) %>
+          <%= link_to doctors_path(doctor) do %>
+            <%= profile.first_name + " " + profile.last_name %>
+        </div>
+
+    </div>
+          <% end %>
+        <% end %>
+
+  </div>
 </div>
+
 <div class="info-1">
   <h2>Map location</h2>
 </div>
