@@ -18,6 +18,12 @@
 
 <div class="info-1">
   <h2>List of doctors</h2>
+    <% @clinic.doctors.each do |doctor| %>
+      <% profile = Profile.find(doctor.user_id) %>
+      <%= link_to doctors_path(doctor) do %>
+        <h4><%= profile.first_name + " " + profile.last_name %></h4>
+      <% end %>
+    <% end %>
 </div>
 <div class="info-1">
   <h2>Map location</h2>
