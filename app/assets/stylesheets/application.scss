@@ -10,3 +10,32 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.search-container input.form-control {
+  width: 700px;
+  border-radius: 20px;
+  padding: 8px 15px;
+}
+
+.search-container .btn-success {
+  border-radius: 30px;
+  padding: 6px 20px;
+}
+
+.search-container .form-check-input {
+  transform: scale(1.4);
+  margin-top: 6px;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
