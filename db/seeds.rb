@@ -3,6 +3,13 @@ require 'faker'
 puts "Seeding data..."
 # Create Clinics
 
+Profile.destroy_all
+Schedule.destroy_all
+Appointment.destroy_all
+Doctor.destroy_all
+Clinic.destroy_all
+User.destroy_all
+
 clinics = []
 
 5.times do
@@ -11,6 +18,11 @@ clinics = []
     address: Faker::Address.city
   )
 end
+
+clinics << Clinic.create!(
+  name: Faker::Company.name,
+  address: "20 W 34th St., New York, NY 10001, USA"
+)
 puts "Created #{clinics.count} clinics."
 
 # Create Users (Doctors and Patients)
