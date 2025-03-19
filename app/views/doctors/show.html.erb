@@ -1,8 +1,15 @@
 <div class="info-1">
-  <h1>Doctors name with his specialty + the languages</h1>
+  <h1><%= @doctor.user.profile.first_name %> <%= @doctor.user.profile.last_name %> - <%= @doctor.speciality %></h1>
 </div>
 <div class="info-1">
   <h2>Clinics the doctor works at</h2>
+  <ul>
+    <% if @doctor.clinic.present? %>
+      <li><%= @doctor.clinic.name %></li>
+    <% else %>
+      <li>No clinics assigned.</li>
+    <% end %>
+  </ul>
 </div>
 <div class="info-1">
   <h2>Doctors available times</h2>
