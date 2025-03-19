@@ -19,4 +19,9 @@ class ClinicsController < ApplicationController
     #   }
     # end
   end
+
+  def test
+    # this is only to test out designs, will be deleted later
+    @clinic = Clinic.find(21)
+  end
 end
