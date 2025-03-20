@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :clinics
   resources :doctors do
     resources :appointments
+    resources :reviews, only: [:create]
   end
   resources :appointments
   resources :profiles
