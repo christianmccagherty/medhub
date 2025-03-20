@@ -12,15 +12,7 @@ Disease.destroy_all
 Specialty.destroy_all
 puts "Database cleaned."
 
-
 puts "Seeding data..."
-
-Schedule.destroy_all
-Profile.destroy_all
-Appointment.destroy_all
-Doctor.destroy_all
-Clinic.destroy_all
-User.destroy_all
 
 clinics = []
 
