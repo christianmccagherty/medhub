@@ -3,15 +3,26 @@
 <% if @results.any? %>
   <ul>
     <% @results.each do |result| %>
-      <li>
-        <% if result.is_a?(Clinic) %>
-          <strong>Clinic:</strong> <%= result.name %> — <%= result.address %>
-        <% elsif result.is_a?(Doctor) %>
-          <strong>Doctor:</strong> <%= result.user.profile.first_name %> <%= result.user.profile.last_name %>
-          | <strong>Specialty:</strong> <%= result.speciality %>
-          | <strong>Clinic:</strong> <%= result.clinic.name if result.clinic.present? %>
-        <% end %>
-      </li>
+      <% if result.is_a?(Clinic) %>
+        <li>
+          <h3>🏥 Clinic: <%= result.name %></h3>
+          <p><strong>Address:</strong> <%= result.address %></p>
+          <p><strong>Specialties offered:</strong></p>
+          <ul>
+            <% result.doctors.map(&:specialties).flatten.uniq.each do |specialty| %>
+              <li><%= specialty.name %></li>
+            <% end %>
+          </ul>
+          <hr>
+        </li>
+      <% elsif result.is_a?(Doctor) %>
+        <li>
+          <h3>👨‍⚕️ Dr. <%= result.user.profile.first_name %> <%= result.user.profile.last_name %></h3>
+          <p><strong>Specialties:</strong> <%= result.specialties.map(&:name).join(", ") %></p>
+          <p><strong>Clinic:</strong> <%= result.clinic.name %></p>
+          <hr>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% else %>

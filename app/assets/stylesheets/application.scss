@@ -19,16 +19,23 @@
   width: 700px;
   border-radius: 20px;
   padding: 8px 15px;
+  margin-right: 10px;
+  border: 2px solid $primary-color;
 }
 
 .search-container .btn-success {
   border-radius: 30px;
   padding: 6px 20px;
+  background-color: $accent-color;
+  border: none;
+  color: #fff;
 }
 
 .search-container .form-check-input {
   transform: scale(1.4);
   margin-top: 6px;
+  background-color: $secondary-color;
+  border-color: $primary-color;
 }
 
 .search-container {
@@ -40,5 +47,9 @@
 .search-container form {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 30px; // increased spacing between all elements
+}
+
+.search-container .form-check {
+  margin-right: 10px; // add spacing between toggle and button
 }

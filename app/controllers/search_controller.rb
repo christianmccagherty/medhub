@@ -1,9 +1,17 @@
 class SearchController < ApplicationController
   def index
+    query = params[:query].downcase
+
     if params[:search_clinics] == '1'
-      @results = Clinic.where("name ILIKE ?", "%#{params[:query]}%")
+      # Find clinics that have doctors whose specialties match the search term
+      @results = Clinic.joins(doctors: :specialties)
+                       .where('LOWER(specialties.name) LIKE ?', "%#{query}%")
+                       .distinct
     else
-      @results = Doctor.where("speciality ILIKE ? OR user_id IN (SELECT id FROM users WHERE email ILIKE ?)", "%#{params[:query]}%", "%#{params[:query]}%")
+      # Find doctors where specialty name or doctor name/email matches the query
+      @results = Doctor.joins(:specialties, :user)
+                       .where('LOWER(specialties.name) LIKE :q OR LOWER(users.email) LIKE :q OR LOWER(users.first_name) LIKE :q OR LOWER(users.last_name) LIKE :q', q: "%#{query}%")
+                       .distinct
     end
   end
 end
