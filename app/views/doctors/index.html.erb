@@ -1,26 +1,15 @@
-<h1>Doctors Index</h1>
+<h1 class="text-center my-4">Find a Doctor</h1>
 
 <div class="container">
   <div class="row">
-    <!--                         start iteration here                        -->
     <% @doctors.each do |doctor| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="card-img-top p-3 rounded" alt="Placeholder Doctor Image">
-
+      <div class="col-md-4">
+        <div class="doctor-card card shadow-sm">
+          <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="card-img-top doctor-image" alt="Placeholder Doctor Image">
           <div class="card-body">
-            <!-- Doctor Name & Specialty -->
-            <h2 class="h5 font-weight-bold">
-              <%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %>
-            </h2>
+            <h5 class="doctor-name"><%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %></h5>
             <p class="text-muted"><strong>Specialty:</strong> <%= doctor.speciality %></p>
-
-            <!-- Clinic (If Any) -->
-            <p class="text-muted"><strong>Clinic:</strong>
-              <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %>
-            </p>
-
-            <!-- View Profile Button -->
+            <p class="text-muted"><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
             <a href="<%= doctor_path(doctor) %>" class="btn btn-primary">View Profile</a>
           </div>
         </div>

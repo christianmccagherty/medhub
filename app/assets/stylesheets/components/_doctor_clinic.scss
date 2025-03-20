@@ -1,0 +1,66 @@
+.doctor-card-container {
+  // border: 2px solid black;
+  width: 300px;
+  height: 150px;
+  margin: 10px;
+  border-radius: 24px;
+  // background: radial-gradient(circle, rgba(255,255,255,1) 34%, rgba(223,223,223,1) 100%);
+  background-color: white;
+  box-shadow: 0 0 10px lightgray;
+
+  &:hover {
+    background: rgb(240, 240, 240);
+  }
+
+  .doctor-flex-container {
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+  }
+
+  .doctor-flex-info {
+    // border: 2px solid red;
+    width: 50%;
+    height: 80%;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .doctor-flex-pic {
+    // border: 2px solid blue;
+    width: 35%;
+    height: auto;
+    background-image: asset_url("scratchy");
+    background-size: cover;
+    background-position: center;
+    object-fit: fill;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 24px;
+  }
+
+  .doctor-card-specialty {
+    border-top: 5px solid #80CBC4;
+    margin: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    p {
+      margin-top: 5px;
+    }
+  }
+
+  p {
+    color: black;
+    margin: 0;
+    // margin-top: 5px;
+  };
+
+  a {
+    text-decoration: none;
+  }
+}
