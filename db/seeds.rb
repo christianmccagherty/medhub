@@ -15,6 +15,20 @@ puts "Database cleaned."
 
 puts "Seeding data..."
 
+Schedule.destroy_all
+Profile.destroy_all
+Appointment.destroy_all
+Doctor.destroy_all
+Clinic.destroy_all
+User.destroy_all
+
+clinics = []
+
+clinics << Clinic.create!(
+  name: "US Buger King Headquarters",
+  address: "5707 Blue Lagoon Drive, Miami-Dade County, Florida, U.S."
+)
+
 # Create Specialties
 specialties = [
   "General Medicine", "Pediatrics", "Dermatology", "Cardiology", "Neurology",
@@ -76,6 +90,11 @@ clinics = []
     address: Faker::Address.city
   )
 end
+
+clinics << Clinic.create!(
+  name: Faker::Company.name,
+  address: "20 W 34th St., New York, NY 10001, USA"
+)
 puts "Created #{clinics.count} clinics."
 
 # Create Users (Doctors and Patients)
