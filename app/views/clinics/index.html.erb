@@ -11,18 +11,8 @@
               <h2 class="h5 font-weight-bold"><%= clinic.name %></h2>
               <p class="text-muted"><strong><%= clinic.name %></strong></p>
               <p class="text-muted"><%= clinic.address %></p>
-              <%clinic_ratings = []
-                doctors = Doctor.where(:clinic_id == clinic)
-                doctors.each do |doctor|
-                  doctor_ratings = []
-                  reviews = Review.where(:doctor_id == doctor)
-                  reviews.map do |review|
-                    doctor_ratings << review.rating
-                  end
-                  clinic_ratings << (doctor_ratings.sum / doctor_ratings.length)
-                end
-                rating = clinic_ratings.sum / clinic_ratings.length %>
-              <p class="text-muted">Patient satisfaction - <%= rating %>/5</p>
+
+              <p class="text-muted">Patient satisfaction - <%= render "rating", clinic: clinic %> </p>
             </div>
           </div>
         <% end %>
