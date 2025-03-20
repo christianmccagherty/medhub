@@ -3,7 +3,19 @@ require 'faker'
 puts "Seeding data..."
 # Create Clinics
 
+Schedule.destroy_all
+Profile.destroy_all
+Appointment.destroy_all
+Doctor.destroy_all
+Clinic.destroy_all
+User.destroy_all
+
 clinics = []
+
+clinics << Clinic.create!(
+  name: "US Buger King Headquarters",
+  address: "5707 Blue Lagoon Drive, Miami-Dade County, Florida, U.S."
+)
 
 5.times do
   clinics << Clinic.create!(
