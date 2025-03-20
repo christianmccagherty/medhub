@@ -9,4 +9,5 @@ class DoctorsController < ApplicationController
     @review = Review.new
     @reviews = Review.where(:doctor_id == @doctor)
   end
+
 end
