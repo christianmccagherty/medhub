@@ -20,9 +20,30 @@
   <div class="info-section">
   <h3>Doctor's Description</h3>
   <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in <%= @doctor.speciality %>, specializing in patient care and medical research.</p>
-</div>
+
 
   <div class="info-section">
     <h3>Book an Appointment</h3>
+  </div>
+
+
+  <% unless @reviews == nil %>
+    <div class="info-section">
+      <h3>Reviews</h3>
+      <% @reviews.each do |review| %>
+        <p><%= review.rating %>/5</p>
+        <p><%= review.content %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="info-section">
+    <h3>Leave a review</h3>
+    <%= simple_form_for [@doctor, @review] do |f| %>
+      <%= f.input :rating,
+        :collection => %w[1 2 3 4 5] %>
+      <%= f.input :content %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>

@@ -12,19 +12,10 @@ Disease.destroy_all
 Specialty.destroy_all
 puts "Database cleaned."
 
-
 puts "Seeding data..."
 
-Profile.destroy_all
-Schedule.destroy_all
-Appointment.destroy_all
-Doctor.destroy_all
-Clinic.destroy_all
-User.destroy_all
+# === Create Specialties ===
 
-clinics = []
-
-# Create Specialties
 specialties = [
   "General Medicine", "Pediatrics", "Dermatology", "Cardiology", "Neurology",
   "Psychiatry", "Orthopedics", "Gastroenterology", "Endocrinology", "Pulmonology",
@@ -34,27 +25,10 @@ specialties = [
   "Infectious Diseases"
 ]
 
-specialties.each do |name|
-  Specialty.create!(name: name)
-end
+specialties.each { |name| Specialty.create!(name: name) }
 puts "Created #{Specialty.count} specialties."
 
-# Create Diseases
-diseases = Disease.create!([
-                           { name: "Hypertension" },
-                           { name: "Diabetes" },
-                           { name: "Asthma" },
-                           { name: "Depression" },
-                           { name: "Migraine" },
-                           { name: "Eczema" },
-                           { name: "Coronary Artery Disease" },
-                           { name: "Chronic Back Pain" },
-                           { name: "Allergies" },
-                           { name: "Influenza" }
-                         ])
-puts "Created #{diseases.count} diseases."
-
-# Connect Diseases to Specialties (many-to-many)
+# === Create Diseases and link to specialties ===
 disease_specialty_map = {
   "Hypertension" => ["Cardiology", "General Medicine"],
   "Diabetes" => ["Endocrinology", "General Medicine"],
@@ -68,6 +42,9 @@ disease_specialty_map = {
   "Influenza" => ["Infectious Diseases", "General Medicine"]
 }
 
+Disease.create!(disease_specialty_map.keys.map { |disease_name| { name: disease_name } })
+puts "Created #{Disease.count} diseases."
+
 disease_specialty_map.each do |disease_name, specialty_names|
   disease = Disease.find_by(name: disease_name)
   specialty_names.each do |specialty_name|
@@ -77,7 +54,7 @@ disease_specialty_map.each do |disease_name, specialty_names|
 end
 puts "Linked diseases to specialties."
 
-# Create Clinics
+# === Create Clinics ===
 clinics = []
 5.times do
   clinics << Clinic.create!(
@@ -85,18 +62,11 @@ clinics = []
     address: Faker::Address.city
   )
 end
-
-clinics << Clinic.create!(
-  name: Faker::Company.name,
-  address: "20 W 34th St., New York, NY 10001, USA"
-)
 puts "Created #{clinics.count} clinics."
 
-# Create Users (Doctors and Patients)
-users = []
+# === Create Users & Doctors with linked specialties ===
+mapped_specialties = Specialty.where(name: disease_specialty_map.values.flatten.uniq)
 doctors = []
-patients = []
-
 10.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -113,14 +83,15 @@ patients = []
   )
   doctor = Doctor.create!(
     user_id: user.id,
-    clinic_id: clinics.sample.id,
-    speciality: Specialty.all.sample.name
+    clinic_id: clinics.sample.id
   )
-  users << user
+  doctor.specialties << mapped_specialties.sample(rand(1..2))
   doctors << doctor
 end
-puts "Created #{doctors.count} doctors."
+puts "Created #{doctors.count} doctors with mapped specialties."
 
+# === Create Patients ===
+patients = []
 20.times do
   user = User.create!(
     email: Faker::Internet.email,
@@ -135,12 +106,11 @@ puts "Created #{doctors.count} doctors."
     dob: Faker::Date.birthday(min_age: 18, max_age: 90),
     user_id: user.id
   )
-  users << user
   patients << user
 end
 puts "Created #{patients.count} patients."
 
-# Create Schedules for Doctors
+# === Create Schedules for Doctors ===
 doctors.each do |doctor|
   Schedule.create!(
     doctor_id: doctor.id,
@@ -158,7 +128,7 @@ doctors.each do |doctor|
 end
 puts "Created schedules for all doctors."
 
-# Create Appointments
+# === Create Appointments ===
 30.times do
   doctor = doctors.sample
   patient = patients.sample
