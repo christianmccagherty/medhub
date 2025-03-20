@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Find your doctor or clinic</h1>
+
+<div class="search-container d-flex justify-content-center mt-5">
+  <%= form_with url: search_path, method: :get, local: true, class: "d-flex align-items-center gap-2" do |form| %>
+    <%= form.text_field :query, placeholder: "Search by disease or specialty...", class: "form-control me-2" %>
+
+    <div class="form-check form-switch">
+      <%= form.check_box :search_clinics, { checked: false, class: "form-check-input", id: "searchToggle" }, '1', '0' %>
+      <label class="form-check-label" for="searchToggle">Doctors</label>
+    </div>
+
+    <%= form.submit "Search", class: "btn btn-success" %>
+  <% end %>
+</div>
