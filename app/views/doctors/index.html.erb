@@ -1,21 +1,19 @@
-<h1>Doctors Index</h1>
+<h1 class="text-center my-4">Find a Doctor</h1>
 
 <div class="container">
   <div class="row">
-    <!--                         start iteration here                        -->
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-        <img src="https://www.canyon.com/dw/image/v2/BCML_PRD/on/demandware.static/-/Sites-canyon-master/default/dw855963ab/images/full/full_2023_/2023/full_2023_3444_lux-trail-cf-9_P01_P5.png?sw=1064&sh=599&sm=fit&sfrm=png" class="card-img-top p-3 rounded" alt="Bike Image">
+    <% @doctors.each do |doctor| %>
+      <div class="col-md-4">
+        <div class="doctor-card card shadow-sm">
+          <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="card-img-top doctor-image" alt="Placeholder Doctor Image">
           <div class="card-body">
-            <h2 class="h5 font-weight-bold">something</h2>
-            <p class="text-muted"><strong>Type:</strong> something</p>
-            <p class="text-muted"><strong>Color:</strong> something</p>
-            <p class="text-muted"><strong>Area:</strong> something</p>
-
-
+            <h5 class="doctor-name"><%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %></h5>
+            <p class="text-muted"><strong>Specialty:</strong> <%= doctor.speciality %></p>
+            <p class="text-muted"><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
+            <a href="<%= doctor_path(doctor) %>" class="btn btn-primary">View Profile</a>
           </div>
         </div>
       </div>
-    <!--      end iteration here                                             -->
+    <% end %>
   </div>
 </div>

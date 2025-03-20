@@ -1,10 +1,118 @@
 .info-1 {
-  background-color: lightgray;
-  margin: 30px;
-  height: 200px;
-  border-radius: 8px;
-  border: 5px solid lightblue;
-  box-shadow: 0 0 10px gray;
+  background: #B4EBE6;
+  margin-top: 100px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+
+  .info-1-card {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    // margin-left: 100px;
+  }
+
+  .info-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 200px;
+    height: 180px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT63j2MBZNZVLxJafOEaAeFK3q6q317p_PvpQ&s");
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .doctor-list {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    a {
+      text-decoration: none;
+    }
+  }
+
+
 }
 
+.doctor-introduction {
 
+  h2 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+  }
+
+  p {
+    margin-left: 100px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+}
+
+.info-2 {
+  height: 300px;
+}
+
+.doctor-mini-card {
+  width: 100px;
+  height: 150px;
+  border-radius: 25%;
+  margin: 5px;
+
+  .doctor-mini-image {
+    height: 50%;
+    background-image: asset_url("scratchy");
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+  }
+
+  .doctor-mini.info {
+    text-align: center;
+    border: 2px solid rgb(0, 0, 0)
+  }
+}
+
+.clinic-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.doctor-banner-container {
+  display: flex;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-right: 40px;
+  min-height: 400px;
+
+  .doctor-banner {
+    background-image: asset_url("doctor");
+    // background-size: cover;
+    // background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 40px;
+    // mix-blend-mode: luminosity;
+    width: 30%;
+    min-height: 100px;
+  }
+}

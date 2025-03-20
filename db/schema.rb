@@ -33,6 +33,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_153118) do
     t.float "longitude"
   end
 
+  create_table "diseases", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diseases_specialties", id: false, force: :cascade do |t|
+    t.bigint "specialty_id", null: false
+    t.bigint "disease_id", null: false
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string "speciality"
     t.bigint "user_id", null: false
@@ -69,6 +80,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_18_153118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_schedules_on_doctor_id"
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,5 +12,16 @@ class ClinicsController < ApplicationController
 
   def index
     @clinics = Clinic.all
+    # @markers = @clinics.geocoded.map do |flat|
+    #   {
+    #     lat: flat.latitude,
+    #     lng: flat.longitude
+    #   }
+    # end
+  end
+
+  def test
+    # this is only to test out designs, will be deleted later
+    @clinic = Clinic.find(21)
   end
 end

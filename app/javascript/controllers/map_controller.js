@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
 export default class extends Controller {
@@ -6,6 +7,7 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
