@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "test", to: "clinics#test"
   resources :clinics
   resources :doctors do
+    resources :appointments
     resources :reviews, only: [:create]
   end
   resources :appointments

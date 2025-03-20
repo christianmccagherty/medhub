@@ -3,6 +3,8 @@
   <div class="profile-header text-center">
     <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
     <h1 class="doctor-name"><%= @doctor.user.profile.first_name %> <%= @doctor.user.profile.last_name %></h1>
+    <p class="text-muted specialty">Radiology</p>
+
   </div>
 
   <div class="info-section">
@@ -17,14 +19,45 @@
   </div>
 
   <div class="info-section">
-  <h3>Doctor's Description</h3>
+    <h3>Doctor's Description</h3>
+    <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in radiology, specializing in patient care and medical research.</p>
+  </div>
 
-  <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in oncology, specializing in patient care and medical research.</p>
-</div>
 
 
   <div class="info-section">
-    <h3>Book an Appointment</h3>
+    <h3>Book an Appointment - Available Time Slot</h3>
+
+    <% if @doctor.schedule.present? %>
+        <ul>
+          <li><strong>Monday:</strong> <%= @doctor.schedule.monday_start_time %> - <%= @doctor.schedule.monday_end_time %></li>
+          <li><strong>Tuesday:</strong> <%= @doctor.schedule.tuesday_start_time %> - <%= @doctor.schedule.tuesday_end_time %></li>
+          <li><strong>Wednesday:</strong> <%= @doctor.schedule.wednesday_start_time %> - <%= @doctor.schedule.wednesday_end_time %></li>
+          <li><strong>Thursday:</strong> <%= @doctor.schedule.thursday_start_time %> - <%= @doctor.schedule.thursday_end_time %></li>
+          <li><strong>Friday:</strong> <%= @doctor.schedule.friday_start_time %> - <%= @doctor.schedule.friday_end_time %></li>
+        </ul>
+    <% else %>
+        <p>This doctor has not set their schedule yet.</p>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-danger"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= form_with url: doctor_appointments_path(doctor_id: @doctor.id), method: :post, local: true do |f| %>
+      <div class="form-group">
+        <label for="appointment_time">Select Date & Time</label>
+        <%= f.datetime_local_field :time, class: "form-control", required: true %>
+      </div>
+
+      <%= f.hidden_field :doctor_id, value: @doctor.id %>
+
+      <div class="form-group mt-3">
+        <%= f.submit "Book Appointment", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
 
 

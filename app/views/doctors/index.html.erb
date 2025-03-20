@@ -8,6 +8,7 @@
           <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="card-img-top doctor-image" alt="Placeholder Doctor Image">
           <div class="card-body">
             <h5 class="doctor-name"><%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %></h5>
+            <p class="text-muted"><strong>Specialty:</strong> Radiology</p>
             <p class="text-muted"><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
             <a href="<%= doctor_path(doctor) %>" class="btn btn-primary">View Profile</a>
           </div>
