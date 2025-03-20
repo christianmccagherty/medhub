@@ -15,6 +15,7 @@ puts "Database cleaned."
 puts "Seeding data..."
 
 # === Create Specialties ===
+
 specialties = [
   "General Medicine", "Pediatrics", "Dermatology", "Cardiology", "Neurology",
   "Psychiatry", "Orthopedics", "Gastroenterology", "Endocrinology", "Pulmonology",
