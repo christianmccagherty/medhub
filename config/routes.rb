@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
   get "test", to: "clinics#test"
   resources :clinics
-  resources :doctors
+  resources :doctors do
+    resources :appointments
+  end
   resources :appointments
   resources :profiles
 end
