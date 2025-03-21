@@ -13,12 +13,12 @@ class ProfilesController < ApplicationController
     @user = current_user
     @profile = @user.profile
     @profile.update(set_params)
-    raise
+    redirect_to profiles_path
   end
 
   private
 
   def set_params
-    params.require(:profile).permit(:document)
+    params.require(:profile).permit(:photo, :document)
   end
 end
