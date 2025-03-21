@@ -1,0 +1,11 @@
+<%= @profile.first_name %> <br>
+<%= @profile.last_name %> <br>
+<%= @profile.address %> <br>
+<%= @profile.dob %> <br>
+
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
+
+

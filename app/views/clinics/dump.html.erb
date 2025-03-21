@@ -1,16 +1,20 @@
+<h1>Clinics Index</h1>
 
-<div class="info-1">
-
-  <div class="info-container">
-
-    <div class="logo">
-    </div>
-
-    <div class="clinic-info">
-      <h1><%= @clinic.name %></h1>
-      <p><strong><%=@clinic.address %></strong></p>
-    </div>
-
+<div class="container">
+  <div class="row">
+    <% @clinics.each do |clinic| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to clinic_path(clinic) do %>
+          <div class="card shadow-sm">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1pQB9NtSvgyPSxOBJf3KpihyyVtiTHzuFOg&s" class="card-img-top p-3 rounded" alt="Burger king">
+            <div class="card-body">
+              <h2 class="h5 font-weight-bold"><%= clinic.name %></h2>
+              <p class="text-muted"><strong><%= clinic.name %></strong></p>
+              <p class="text-muted"><%= clinic.address %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-
 </div>

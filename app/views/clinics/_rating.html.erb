@@ -1,0 +1,12 @@
+<%clinic_ratings = []
+  doctors = Doctor.where(:clinic_id == clinic)
+  doctors.each do |doctor|
+    doctor_ratings = []
+    reviews = Review.where(:doctor_id == doctor)
+    reviews.map do |review|
+      doctor_ratings << review.rating
+    end
+    clinic_ratings << (doctor_ratings.sum / doctor_ratings.length)
+  end
+  rating = clinic_ratings.sum / clinic_ratings.length %>
+<%= rating %>/5

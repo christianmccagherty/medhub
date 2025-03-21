@@ -6,5 +6,8 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
+    @review = Review.new
+    @reviews = Review.where(:doctor_id == @doctor)
   end
+
 end
