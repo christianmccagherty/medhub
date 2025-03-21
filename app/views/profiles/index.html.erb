@@ -1,8 +1,10 @@
 <%= @profile.first_name %> <br>
 <%= @profile.last_name %> <br>
 <%= @profile.address %> <br>
-<%= @profile.dob %> <br>
-<%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+<%= @profile.dob.strftime('%B/%d/%Y') %> <br>
+<% if @profile.photo.key %>
+  <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <%= @profile.document.filename %>
 
 
@@ -14,4 +16,4 @@
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Go back", root_path %>
+<%= link_to "Go back", root_path, class: "btn btn-primary" %>
