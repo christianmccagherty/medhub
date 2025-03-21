@@ -4,7 +4,7 @@
   <ul>
     <% @results.each do |result| %>
       <% if result.is_a?(Clinic) %>
-        <li>
+        <li class="mb-4">
           <h3>🏥 Clinic: <%= result.name %></h3>
           <p><strong>Address:</strong> <%= result.address %></p>
           <p><strong>Specialties offered:</strong></p>
@@ -16,7 +16,7 @@
           <hr>
         </li>
       <% elsif result.is_a?(Doctor) %>
-        <li>
+        <li class="mb-4">
           <h3>👨‍⚕️ Dr. <%= result.user.profile.first_name %> <%= result.user.profile.last_name %></h3>
           <p><strong>Specialties:</strong> <%= result.specialties.map(&:name).join(", ") %></p>
           <p><strong>Clinic:</strong> <%= result.clinic.name %></p>
@@ -28,3 +28,5 @@
 <% else %>
   <p>No results found for "<%= params[:query] %>".</p>
 <% end %>
+
+<%= link_to 'Back to search', root_path, class: 'btn btn-outline-primary mt-4' %>
