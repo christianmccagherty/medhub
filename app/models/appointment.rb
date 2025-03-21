@@ -8,6 +8,7 @@ class Appointment < ApplicationRecord
 
   private
 
+  # This validation disables double-booking a doctor
   def no_double_booking
     existing_appointment = Appointment.where(doctor_id: doctor_id, time: time).exists?
     errors.add(:time, "This slot is already taken") if existing_appointment

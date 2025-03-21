@@ -164,10 +164,12 @@ valid_times = [
   Time.zone.parse("2025-04-03 09:30"), # Thursday
   Time.zone.parse("2025-04-04 11:00")  # Friday
 ]
+
 valid_times.each do |appointment_time|
   doctor = doctors.sample
   patient = patients.sample
   next if doctor.schedule.blank?
+
   Appointment.create!(
     user_id: patient.id,
     doctor_id: doctor.id,
@@ -175,4 +177,5 @@ valid_times.each do |appointment_time|
   )
 end
 puts "Created 10 appointments."
+
 puts "Seeding completed!"
