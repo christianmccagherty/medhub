@@ -2,13 +2,36 @@
 
 <div class="search-container d-flex justify-content-center mt-5">
   <%= form_with url: search_path, method: :get, local: true, class: "d-flex align-items-center gap-2" do |form| %>
-    <%= form.text_field :query, placeholder: "Search by disease or specialty...", class: "form-control me-2" %>
+    <%= form.text_field :query, placeholder: "Search by disease or specialty...", value: params[:query], class: "form-control me-2" %>
 
-    <div class="form-check form-switch">
-      <%= form.check_box :search_clinics, { checked: false, class: "form-check-input", id: "searchToggle" }, '1', '0' %>
-      <label class="form-check-label" for="searchToggle">Doctors</label>
+    <div class="search-type-switch">
+      <%= form.hidden_field :search_type, value: (params[:search_type] || 'doctors'), id: "searchTypeInput" %>
+      <button type="button" class="switch-btn" id="doctorsBtn">Doctors</button>
+      <button type="button" class="switch-btn" id="clinicsBtn">Clinics</button>
     </div>
 
     <%= form.submit "Search", class: "btn btn-success" %>
   <% end %>
 </div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("searchToggle");
+    const labelSpan = document.querySelector(".toggle-label .toggle-text");
+    const hiddenInput = document.getElementById("searchTypeInput");
+
+    function updateToggle() {
+      if (toggle.checked) {
+        labelSpan.textContent = "Clinics";
+        hiddenInput.value = "clinics";
+      } else {
+        labelSpan.textContent = "Doctors";
+        hiddenInput.value = "doctors";
+      }
+    }
+
+    toggle.addEventListener('change', updateToggle);
+    updateToggle();
+  });
+</script>

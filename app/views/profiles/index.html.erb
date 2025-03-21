@@ -1,0 +1,17 @@
+<%= @profile.first_name %> <br>
+<%= @profile.last_name %> <br>
+<%= @profile.address %> <br>
+<%= @profile.dob %> <br>
+<%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+<%= @profile.document.filename %>
+
+
+
+
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :document, as: :file %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Go back", root_path %>
