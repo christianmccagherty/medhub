@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_20_161459) do
+
+ActiveRecord::Schema[7.1].define(version: 2025_03_21_111214) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +74,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_20_161459) do
     t.bigint "disease_id", null: false
   end
 
+  create_table "doctor_langauges", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "langauge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_doctor_langauges_on_doctor_id"
+    t.index ["langauge_id"], name: "index_doctor_langauges_on_langauge_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "clinic_id", null: false
@@ -86,6 +97,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_20_161459) do
     t.bigint "specialty_id", null: false
     t.index ["doctor_id", "specialty_id"], name: "index_doctors_specialties_on_doctor_id_and_specialty_id"
     t.index ["specialty_id", "doctor_id"], name: "index_doctors_specialties_on_specialty_id_and_doctor_id"
+  end
+
+  create_table "langauges", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -151,6 +168,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_20_161459) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "users"
+  add_foreign_key "doctor_langauges", "doctors"
+  add_foreign_key "doctor_langauges", "langauges"
   add_foreign_key "doctors", "clinics"
   add_foreign_key "doctors", "users"
   add_foreign_key "profiles", "users"
