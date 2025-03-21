@@ -4,6 +4,7 @@ require 'faker'
 puts "Cleaning up database..."
 Appointment.destroy_all
 Schedule.destroy_all
+Review.destroy_all
 Doctor.destroy_all
 Profile.destroy_all
 User.destroy_all
@@ -13,6 +14,15 @@ Specialty.destroy_all
 puts "Database cleaned."
 
 puts "Seeding data..."
+
+# === Create Langauges ===
+
+langauges = [
+  "English", "French", "German", "Portuguese", "Spanish", "Turkish", "Italian", "Klingon", "Greek"
+]
+
+langauges.each { |langauge| Langauge.create!(name: langauge) }
+puts "Created #{langauges.count} langauges."
 
 # === Create Specialties ===
 
@@ -89,6 +99,12 @@ doctors = []
   doctors << doctor
 end
 puts "Created #{doctors.count} doctors with mapped specialties."
+
+doctors.each do |doctor|
+  (1..3).to_a.sample.times { DoctorLangauge.create!(doctor: doctor, langauge: Langauge.all.sample) }
+end
+
+puts "Added langauges to doctors"
 
 # === Create Patients ===
 patients = []
