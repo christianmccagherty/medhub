@@ -1,5 +1,7 @@
 # db/seeds.rb
 require 'faker'
+require "open-uri"
+user_one_photo_file = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742557298/development/lr5mftjejfo92cvrmjjjc7yi10lw.webp").open
 
 puts "Cleaning up database..."
 Appointment.destroy_all
@@ -84,13 +86,16 @@ doctors = []
     is_doctor: true,
     phone_number: Faker::PhoneNumber.cell_phone
   )
-  Profile.create!(
+
+  profile = Profile.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
     dob: Faker::Date.birthday(min_age: 30, max_age: 65),
     user_id: user.id
   )
+  profile.photo.attach(io: user_one_photo_file, filename: "cavendish.png", content_type: "image/png")
+  profile.save!
   doctor = Doctor.create!(
     user_id: user.id,
     clinic_id: clinics.sample.id
@@ -115,13 +120,15 @@ patients = []
     is_doctor: false,
     phone_number: Faker::PhoneNumber.cell_phone
   )
-  Profile.create!(
+  profile_two = Profile.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: Faker::Address.full_address,
     dob: Faker::Date.birthday(min_age: 18, max_age: 90),
     user_id: user.id
   )
+  profile_two.photo.attach(io: user_one_photo_file, filename: "cavendish.png", content_type: "image/png")
+  profile_two.save!
   patients << user
 end
 puts "Created #{patients.count} patients."
