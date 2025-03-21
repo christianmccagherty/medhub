@@ -1,5 +1,4 @@
 class DoctorsController < ApplicationController
-
   def index
     @doctors = Doctor.all
   end
@@ -7,7 +6,5 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @review = Review.new
-    @reviews = Review.where(:doctor_id == @doctor)
   end
-
 end
