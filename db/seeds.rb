@@ -145,15 +145,30 @@ end
 puts "Created schedules for all doctors."
 
 # === Create Appointments ===
-30.times do
+valid_times = [
+  Time.zone.parse("2025-03-24 10:00"), # Monday
+  Time.zone.parse("2025-03-25 11:30"), # Tuesday
+  Time.zone.parse("2025-03-26 09:00"), # Wednesday
+  Time.zone.parse("2025-03-27 14:00"), # Thursday
+  Time.zone.parse("2025-03-28 16:30"), # Friday
+  Time.zone.parse("2025-03-31 10:30"), # Monday
+  Time.zone.parse("2025-04-01 13:00"), # Tuesday
+  Time.zone.parse("2025-04-02 15:30"), # Wednesday
+  Time.zone.parse("2025-04-03 09:30"), # Thursday
+  Time.zone.parse("2025-04-04 11:00")  # Friday
+]
+
+valid_times.each do |appointment_time|
   doctor = doctors.sample
   patient = patients.sample
+  next if doctor.schedule.blank?
+
   Appointment.create!(
     user_id: patient.id,
     doctor_id: doctor.id,
-    time: Faker::Time.forward(days: 30, period: :morning)
+    time: appointment_time
   )
 end
-puts "Created 30 random appointments."
+puts "Created 10 appointments."
 
 puts "Seeding completed!"
