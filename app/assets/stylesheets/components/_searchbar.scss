@@ -36,3 +36,72 @@
 .search-container .form-check {
   margin-right: 10px; // add spacing between toggle and button
 }
+
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 50px;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  background-color: $secondary-color;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 100%;
+  position: relative;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.option-left,
+.option-right {
+  z-index: 2;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 70px;
+  height: 40px;
+  background-color: $primary-color;
+  border-radius: 50px;
+  transition: transform 0.3s;
+  z-index: 1;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-slider {
+  transform: translateX(80px);
+}
+
+.search-type-switch {
+  display: flex;
+  gap: 10px;
+}
+
+.switch-btn {
+  border: 1px solid $primary-color;
+  border-radius: 20px;
+  padding: 6px 20px;
+  background-color: transparent;
+  cursor: pointer;
+  color: $primary-color;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.switch-btn.active {
+  background-color: $primary-color;
+  color: white;
+}
