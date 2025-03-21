@@ -5,12 +5,13 @@ import "@popperjs/core"
 import "bootstrap"
 
 
-function initializeSearchToggle() {
+document.addEventListener("turbo:load", () => {
   const doctorsBtn = document.getElementById("doctorsBtn");
   const clinicsBtn = document.getElementById("clinicsBtn");
   const searchTypeInput = document.getElementById("searchTypeInput");
 
   function setActive(button, type) {
+    if (!doctorsBtn || !clinicsBtn || !searchTypeInput) return;
     doctorsBtn.classList.remove("active");
     clinicsBtn.classList.remove("active");
     button.classList.add("active");
@@ -21,13 +22,11 @@ function initializeSearchToggle() {
     doctorsBtn.addEventListener("click", () => setActive(doctorsBtn, "doctors"));
     clinicsBtn.addEventListener("click", () => setActive(clinicsBtn, "clinics"));
 
-    if (!searchTypeInput.value || searchTypeInput.value === "doctors") {
-      setActive(doctorsBtn, "doctors");
-    } else {
+    // On page load or turbo restore, highlight the correct button:
+    if (searchTypeInput.value === "clinics") {
       setActive(clinicsBtn, "clinics");
+    } else {
+      setActive(doctorsBtn, "doctors");
     }
   }
-}
-
-document.addEventListener("DOMContentLoaded", initializeSearchToggle);
-window.addEventListener("pageshow", initializeSearchToggle);
+});

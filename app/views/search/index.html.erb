@@ -5,7 +5,7 @@
     <% @results.each do |result| %>
       <% if result.is_a?(Clinic) %>
         <li class="mb-4">
-          <h3>🏥 Clinic: <%= result.name %></h3>
+          <h3>🏥 <%= link_to result.name, clinic_path(result) %></h3>
           <p><strong>Address:</strong> <%= result.address %></p>
           <p><strong>Specialties offered:</strong></p>
           <ul>
@@ -17,7 +17,7 @@
         </li>
       <% elsif result.is_a?(Doctor) %>
         <li class="mb-4">
-          <h3>👨‍⚕️ Dr. <%= result.user.profile.first_name %> <%= result.user.profile.last_name %></h3>
+          <h3>👨‍⚕️ <%= link_to "Dr. #{result.user.profile.first_name} #{result.user.profile.last_name}", doctor_path(result) %></h3>
           <p><strong>Specialties:</strong> <%= result.specialties.map(&:name).join(", ") %></p>
           <p><strong>Clinic:</strong> <%= result.clinic.name %></p>
           <hr>
