@@ -1,0 +1,13 @@
+<div class="col-md-4">
+  <%= link_to clinic_path(clinic) do %>
+    <div class="doctor-card card shadow-sm">
+      <img src="https://placekitten.com/400/250" class="card-img-top doctor-image" alt="Clinic Image">
+      <div class="card-body">
+        <h2 class="h5 font-weight-bold" style="font-family: Quicksand, sans-serif;"><%= clinic.name %></h2>
+        <p class="text-muted" style="font-family: Noto Serif, serif;"><strong>Address:</strong> <%= clinic.address %></p>
+        <p class="text-muted" style="font-family: Noto Serif, serif;"><strong>Specialties:</strong> <%= clinic.doctors.map(&:specialties).flatten.uniq.map(&:name).join(', ') %></p>
+        <p class="text-muted" style="font-family: Noto Serif, serif;">⭐ 4.8/5 | 🇬🇧 🇩🇪</p>
+      </div>
+    </div>
+  <% end %>
+</div>
