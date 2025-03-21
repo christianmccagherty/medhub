@@ -1,19 +1,43 @@
-<%= @profile.first_name %> <br>
-<%= @profile.last_name %> <br>
-<%= @profile.address %> <br>
-<%= @profile.dob.strftime('%B/%d/%Y') %> <br>
-<% if @profile.photo.key %>
-  <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<%= @profile.document.filename %>
+<div class="clinic-card-container">
+  <div class="clinic-card-flex">
+    <div class="clinic-card-info">
+      <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+      <h3><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></h3>
+      <h3>Born on: <%= @profile.dob.strftime('%B/%d/%Y') %> </h3>
+    </div>
+  </div>
+
+  <div class="clinic-card-extras">
+    <div class="clinic-card-socials">
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-github"></i>
+    </div>
+    <div style="margin-right: 50px, width: 350px, height: 300px">
+      <% if @profile.photo.key %>
+        <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+  </div>
 
 
 
+</div>
 
-<%= simple_form_for(@profile) do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :document, as: :file %>
-  <%= f.submit %>
-<% end %>
+<h1 style="margin-top: 100px; margin-left: 100px">Add display picture or Document</h1>
+
+<div class="clinic-card-container">
+  <div class="clinic-card-flex">
+    <div class="clinic-card-info" style="margin-right: 60px" >
+      <%= simple_form_for(@profile) do |f| %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :document, as: :file %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= link_to "Go back", root_path, class: "btn btn-primary" %>
