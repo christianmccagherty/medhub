@@ -20,9 +20,9 @@
   .nav-link {
     color: white;
     margin-right: 15px;
-    transition: color 0.3s, background-color 0.3s;
     border-radius: 6px;
     padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s, border-bottom 0.3s;
 
     &:hover {
       background-color: $accent-color;
@@ -31,11 +31,12 @@
 
     &.active {
       border-bottom: 2px solid $accent-color;
-      padding-bottom: 3px;
-      background-color: transparent;
       color: white;
+      background-color: transparent;
+      padding-bottom: 3px;
     }
   }
+
 
   .dropdown-menu {
     border-radius: 12px;

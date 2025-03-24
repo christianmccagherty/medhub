@@ -1,1 +1,42 @@
 // Specific CSS for your home-page
+// pages/_home.scss
+
+.homepage-header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  color: $primary-color;
+  width: 100%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  padding: 0 20px; // ensures it doesn't stick to the edge on small screens
+}
+
+@media (max-width: 768px) {
+  .homepage-header {
+    font-size: 2.2rem;
+    margin-top: 40px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.homepage-header {
+  text-align: left;
+  margin: 40px 30px 0 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  color: $primary-color;
+}

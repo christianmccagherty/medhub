@@ -1,6 +1,6 @@
 // Graphical variables
-@import "config/fonts";
-@import "config/colors";
+@import "config/colors"; // <-- import this first
+@import "config/fonts"; // <-- then import fonts that use those variables
 @import "config/bootstrap_variables";
 
 // External libraries
@@ -9,10 +9,9 @@
 
 // Your CSS partials
 @import "components/index";
-@import "components/searchbar";
 @import "pages/index";
+@import "components/searchbar";
 @import "components/search_results";
-
 
 // Mapbox
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
