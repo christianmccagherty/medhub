@@ -21,6 +21,9 @@
   <div class="info-section">
     <h3>Doctor's Description</h3>
     <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in radiology, specializing in patient care and medical research.</p>
+    <% unless @doctor.average_doctor_rating == "unrated" %>
+      <p class="text-muted">Patient satisfaction - <%= @doctor.average_doctor_rating %>/5 </p>
+    <% end %>
   </div>
 
 

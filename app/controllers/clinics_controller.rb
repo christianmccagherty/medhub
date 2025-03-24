@@ -31,8 +31,12 @@ class ClinicsController < ApplicationController
       reviews.map do |review|
         doctor_ratings << review.rating
       end
-      clinic_ratings << (doctor_ratings.sum / doctor_ratings.length)
+      clinic_ratings << (doctor_ratings.sum / doctor_ratings.length) unless doctor_ratings.empty?
     end
-    clinic_ratings.sum / clinic_ratings.length
+    if clinic_ratings.empty?
+      rating = "unrated"
+    else
+      rating = clinic_ratings.sum / clinic_ratings.length
+    end
   end
 end

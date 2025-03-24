@@ -7,7 +7,9 @@
       <h3>Something here about specialty</h3>
       <h3>Fortis Fortuna Adiuvat</h3>
       <h3>Something here about specialty</h3>
-      <h3><strong>Patient satisfaction</strong> - <%= @rating %>/5</h3>
+      <% unless @clinic.average_clinic_rating == "unrated" %>
+        <p class="text-muted">Patient satisfaction - <%= @clinic.average_clinic_rating %>/5 </p>
+      <% end %>
     </div>
   </div>
 

@@ -1,0 +1,13 @@
+<div class="col-md-4 mb-4">
+  <div class="doctor-card card shadow-sm">
+    <img src="https://placekitten.com/400/300" class="card-img-top doctor-image" alt="Doctor Image">
+    <div class="card-body">
+      <h5 class="doctor-name">
+        Dr. <%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %>
+      </h5>
+      <p><strong>Specialties:</strong> <%= doctor.specialties.map(&:name).join(", ") %></p>
+      <p><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
+      <%= link_to "View Profile", doctor_path(doctor), class: "btn btn-primary mt-2" %>
+    </div>
+  </div>
+</div>
