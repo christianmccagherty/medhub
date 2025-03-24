@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :appointments
-  has_one :profile
-  has_one :doctor
-  has_one_attached :document
+  has_many :appointments, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  has_one :doctor, dependent: :destroy
+  has_one_attached :document, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
