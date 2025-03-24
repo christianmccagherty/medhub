@@ -4,8 +4,8 @@ class Doctor < ApplicationRecord
   has_many :appointments
   has_one :schedule
   has_and_belongs_to_many :specialties
-  has_many :doctor_langauges, dependent: :destroy
-  has_many :langauges, through: :doctor_langauges
+  has_many :doctor_languages, dependent: :destroy
+  has_many :languages, through: :doctor_languages
   has_many :reviews
   def average_doctor_rating
     return "unrated" if reviews.size == 0

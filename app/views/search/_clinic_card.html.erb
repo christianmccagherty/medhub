@@ -5,8 +5,13 @@
       <div class="card-body">
         <h2 class="h5 font-weight-bold" style="font-family: Quicksand, sans-serif;"><%= clinic.name %></h2>
         <p class="text-muted" style="font-family: Noto Serif, serif;"><strong>Address:</strong> <%= clinic.address %></p>
-        <p class="text-muted" style="font-family: Noto Serif, serif;"><strong>Specialties:</strong> <%= clinic.doctors.map(&:specialties).flatten.uniq.map(&:name).join(', ') %></p>
-        <p class="text-muted" style="font-family: Noto Serif, serif;">⭐ 4.8/5 | 🇬🇧 🇩🇪</p>
+        <p class="text-muted" style="font-family: Noto Serif, serif;"> <%= clinic.doctors.map(&:specialties).flatten.uniq.map(&:name).join(', ') %></p>
+      <div class="mb-2">
+        <% clinic.doctors.joins(:languages).distinct.flat_map(&:languages).uniq.each do |language| %>
+          <span class="me-1"><%= language_flag(language.name) %></span>
+        <% end %>
+      </div>
+
       </div>
     </div>
   <% end %>

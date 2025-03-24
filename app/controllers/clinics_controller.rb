@@ -1,5 +1,4 @@
 class ClinicsController < ApplicationController
-
   def show
     @clinic = Clinic.find(params[:id])
     @markers = [
@@ -12,7 +11,7 @@ class ClinicsController < ApplicationController
   end
 
   def index
-    @clinics = Clinic.all
+    redirect_to search_path(search_type: 'clinics')
   end
 
   def test
@@ -24,19 +23,21 @@ class ClinicsController < ApplicationController
 
   def average_rating(clinic)
     clinic_ratings = []
-    doctors = Doctor.where(:clinic_id == clinic)
+    doctors = Doctor.where(clinic_id: clinic.id)
+
     doctors.each do |doctor|
-      doctor_ratings = []
-      reviews = Review.where(:doctor_id == doctor)
-      reviews.map do |review|
-        doctor_ratings << review.rating
-      end
-      clinic_ratings << (doctor_ratings.sum / doctor_ratings.length) unless doctor_ratings.empty?
+      doctor_ratings = collect_doctor_ratings(doctor)
+      clinic_ratings << calculate_average(doctor_ratings) unless doctor_ratings.empty?
     end
-    if clinic_ratings.empty?
-      rating = "unrated"
-    else
-      rating = clinic_ratings.sum / clinic_ratings.length
-    end
+
+    clinic_ratings.empty? ? "unrated" : calculate_average(clinic_ratings)
+  end
+
+  def collect_doctor_ratings(doctor)
+    Review.where(doctor_id: doctor.id).pluck(:rating)
+  end
+
+  def calculate_average(ratings)
+    ratings.sum.to_f / ratings.length
   end
 end

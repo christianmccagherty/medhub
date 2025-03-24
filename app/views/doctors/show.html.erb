@@ -18,6 +18,14 @@
     <% end %>
   </div>
 
+    <div class="info-section">
+      <div>
+        <% @doctor.languages.each do |language| %>
+          <span class="me-2 fs-4"><%= language_flag(language.name) %></span>
+        <% end %>
+      </div>
+    </div>
+
   <div class="info-section">
     <h3>Doctor's Description</h3>
     <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in radiology, specializing in patient care and medical research.</p>
