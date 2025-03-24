@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get "test", to: "clinics#test"
   resources :clinics
   resources :doctors do
-    resources :appointments
+    resources :appointments, only: [:create]
     resources :reviews, only: [:create]
   end
-  resources :appointments
+  resources :appointments, only: [:index, :update, :destroy]
   resources :profiles
 end

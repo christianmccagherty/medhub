@@ -3,6 +3,7 @@ require 'faker'
 require "open-uri"
 user_one_photo_file = URI.parse("https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA").open
 
+
 puts "Cleaning up database..."
 Appointment.destroy_all
 Schedule.destroy_all
