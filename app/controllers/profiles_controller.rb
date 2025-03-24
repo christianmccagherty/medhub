@@ -25,8 +25,11 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = @user.profile
-    @profile.update(set_params)
-    redirect_to profiles_path
+    if @profile.update(set_params)
+      redirect_to profiles_path
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
