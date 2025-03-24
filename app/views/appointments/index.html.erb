@@ -4,36 +4,45 @@
 <div class="container">
   <div class="row">
     <% @appointments.each do |appointment| %>
+      <% @available_time_slots = appointment.doctor.generate_available_slots %>
       <div class="col-md-4">
-        <%# <%= link_to doctor_path(appointment.doctor) do %>
-          <div class="appointment-card card shadow-sm">
+          <div data-controller="toggle-show-form-button" class="appointment-card card shadow-sm">
             <div class="card-body">
-              <p class="h5 font-weight-bold"><strong>Dr <%= appointment.doctor.user.profile.first_name + " " + appointment.doctor.user.profile.last_name %></strong></p>
+              <p class="doctor-name"><strong>Dr <%= appointment.doctor.user.profile.first_name + " " + appointment.doctor.user.profile.last_name %></strong></p>
               <p class="text-muted"><%= appointment.doctor.clinic.name %> | <%= appointment.doctor.clinic.address %></p>
               <p class="text-muted"><%= appointment.time.strftime("%H:%M") %> | <%= appointment.time.strftime("%m/%d/%Y") %></p>
-              <%= form_with model: appointment do |f| %>
-                <div class="form-group">
-                  <label for="appointment_time">Select Date & Time</label>
-                  <%= f.datetime_local_field :time, class: "form-control", required: true %>
-                </div>
-                <div class="form-group mt-3">
-                  <%= f.submit "Reschedule Appointment", class: "btn btn-primary" %>
-                </div>
-              <% end %>
-            </div>
-
-
-
-              <%= link_to "Cancel", appointment_path(appointment),
+              <div class="btn-flex-box">
+                <button class="btn btn-toggle" data-action="click->toggle-show-form-button#toggle">Reschedule Appointment</button>
+                <%= link_to "Cancel", appointment_path(appointment), class: "btn btn-cancel",
                 data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure you want to cancel this appointment?"
-              }%> </p>
+              } %>
+              </div>
+              <div class="d-none" data-toggle-show-form-button-target="form">
+                <%= form_with model: appointment do |f| %>
+                  <div class="form-group">
+                    <label for="appointment_time">New Date & Time</label>
+                    <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>
+                  </div>
+                  <div class="form-group mt-3">
+                    <%= f.submit "Confirm", class: "btn btn-confirm" %>
+                  </div>
+                    <script type="application/json" id="available-slots-json">
+                      <% unless @available_time_slots == nil %>
+                        <%= @available_time_slots.map { |slot| slot.strftime("%Y-%m-%dT%H:%M:%S") }.to_json.html_safe %>
+                      <% end %>
+                    </script>
+
+                    <small class="text-muted">*Only available slots within the next 2 months are shown.</small>
+                <% end %>
+              </div>
+            </div>
+
+
             </div>
           </div>
-        <%# <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
