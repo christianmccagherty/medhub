@@ -48,7 +48,7 @@
       <div class="alert alert-danger"><%= flash[:alert] %></div>
     <% end %>
 
-    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true do |f| %>
+    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor) do |f| %>
       <div class="form-group">
         <label for="appointment_time">Select Date & Time</label>
         <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>
