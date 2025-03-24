@@ -1,7 +1,7 @@
 # db/seeds.rb
 require 'faker'
 require "open-uri"
-user_one_photo_file = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742557298/development/lr5mftjejfo92cvrmjjjc7yi10lw.webp").open
+user_one_photo_file = URI.parse("https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=640:*").open
 
 puts "Cleaning up database..."
 Appointment.destroy_all
