@@ -30,7 +30,9 @@
     }
 
     &.active {
-      background-color: $accent-color;
+      border-bottom: 2px solid $accent-color;
+      padding-bottom: 3px;
+      background-color: transparent;
       color: white;
     }
   }
