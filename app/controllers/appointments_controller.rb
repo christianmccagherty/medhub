@@ -1,6 +1,10 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @appointments = current_user.appointments.includes(doctor: [:user, :clinic])
+  end
+
   def create
     doctor = Doctor.find(params[:doctor_id])
     appointment = doctor.appointments.new(appointment_params)
