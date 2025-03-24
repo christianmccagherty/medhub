@@ -1,7 +1,8 @@
 # db/seeds.rb
 require 'faker'
 require "open-uri"
-user_one_photo_file = URI.parse("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRV_Uqyg1lWLCOTtramnX1mzdG67cvb5_z3Q&s").open
+
+user_one_photo_file = URI.parse("https://flouringkitchen.com/wp-content/uploads/2023/07/BW1A4089-3.jpg").open
 
 puts "Cleaning up database..."
 Appointment.destroy_all

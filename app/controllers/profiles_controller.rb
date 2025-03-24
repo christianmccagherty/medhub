@@ -5,8 +5,16 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
   end
 
+  def new
+    @profile = Profile.new
+  end
+
   def create
-    raise
+    @user = current_user
+    @profile = Profile.new(set_params)
+    @profile.user = @user
+    @profile.save!
+    # @user.profile = @profile
   end
 
   def update
@@ -19,6 +27,6 @@ class ProfilesController < ApplicationController
   private
 
   def set_params
-    params.require(:profile).permit(:photo, :document)
+    params.require(:profile).permit(:photo, :document, :first_name, :last_name, :dob, :address)
   end
 end

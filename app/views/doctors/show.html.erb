@@ -51,7 +51,7 @@
     <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor) do |f| %>
       <div class="form-group">
         <label for="appointment_time">Select Date & Time</label>
-        <%= f.datetime_local_field :time, class: "form-control", required: true %>
+        <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>
       </div>
 
       <%= f.hidden_field :doctor_id, value: @doctor.id %>
@@ -61,6 +61,10 @@
       </div>
     <% end %>
   </div>
+
+  <script type="application/json" id="available-slots-json">
+    <%= @available_time_slots.map { |slot| slot.strftime("%Y-%m-%dT%H:%M:%S") }.to_json.html_safe %>
+  </script>
 
 
   <% unless @reviews == nil %>
