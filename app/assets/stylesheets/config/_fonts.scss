@@ -3,18 +3,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
-// Define fonts for body and headers
+// Define font variables
 $body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: "Quicksand", "Helvetica", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+// Global font settings
+body {
+  font-family: $body-font;
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6, button, .btn {
+  font-family: $headers-font;
+  font-weight: bold;
+}
+
+// Optional: paragraph styling
+p {
+  font-family: $body-font;
+}

@@ -1,10 +1,10 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+// Existing imports
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 
-
+// Search toggle logic
 document.addEventListener("turbo:load", () => {
   const doctorsBtn = document.getElementById("doctorsBtn");
   const clinicsBtn = document.getElementById("clinicsBtn");
@@ -22,11 +22,25 @@ document.addEventListener("turbo:load", () => {
     doctorsBtn.addEventListener("click", () => setActive(doctorsBtn, "doctors"));
     clinicsBtn.addEventListener("click", () => setActive(clinicsBtn, "clinics"));
 
-    // On page load or turbo restore, highlight the correct button:
     if (searchTypeInput.value === "clinics") {
       setActive(clinicsBtn, "clinics");
     } else {
       setActive(doctorsBtn, "doctors");
     }
   }
+});
+
+// New navbar active state logic
+document.addEventListener("turbo:load", () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
+
+  navLinks.forEach(link => {
+    const linkPath = link.getAttribute('href');
+    if (linkPath === currentPath) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
 });
