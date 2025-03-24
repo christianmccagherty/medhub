@@ -20,6 +20,7 @@
         <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
     </div>
+    <%= link_to "Edit password", edit_user_registration_path, class: "btn btn-primary m-3" %>
   </div>
 
 
