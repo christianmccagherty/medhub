@@ -1,8 +1,16 @@
 <h1>Search Results</h1>
 
+<p class="mt-2">
+  <% if params[:query].present? %>
+    Showing results for "<strong><%= params[:query] %></strong>" in <strong><%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ") %></strong>.
+  <% else %>
+    Showing all <strong><%= params[:search_type].capitalize %></strong> in <strong><%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ") %></strong>.
+  <% end %>
+</p>
+
 <% if @results.any? %>
   <div class="container mt-4">
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @results.each do |result| %>
         <% if result.is_a?(Clinic) %>
           <%= render partial: "search/clinic_card", locals: { clinic: result } %>
@@ -11,9 +19,12 @@
         <% end %>
       <% end %>
     </div>
-  </div>
 <% else %>
   <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
 <% end %>
+
+<div class="d-flex justify-content-center mt-4">
+  <%= paginate @results %>
+</div>
 
 <%= link_to 'Back to search', root_path, class: 'btn btn-outline-primary mt-4' %>

@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   def index
-    @doctors = Doctor.all
+    redirect_to search_path(search_type: 'doctors')
   end
 
   def show
