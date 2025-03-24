@@ -13,11 +13,12 @@ class DoctorsController < ApplicationController
 
   private
 
-  def generate_available_slots(doctor, days_ahead = 60)
+  def generate_available_slots(doctor, days_ahead = 14)
     schedule = doctor.schedule
     return [] unless schedule
 
     slots = []
+
     (0..days_ahead).each do |offset|
       date = Date.today + offset
       weekday = date.strftime("%A").downcase
@@ -29,11 +30,13 @@ class DoctorsController < ApplicationController
       start_time = Time.zone.parse("#{date} #{start_time_str}")
       end_time   = Time.zone.parse("#{date} #{end_time_str}")
 
-      while start_time < end_time
-        slots << start_time
-        start_time = start_time + 30.minutes
+      current_time = start_time
+      while current_time < end_time
+        slots << current_time
+        current_time = current_time + 30.minutes
       end
-      slots
     end
+
+    slots
   end
 end
