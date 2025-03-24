@@ -1,3 +1,4 @@
+require "open-uri"
 class ProfilesController < ApplicationController
 
   def index
@@ -6,15 +7,19 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    user_one_photo_file = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742813684/development/r9patyczsmcryvu4uq3c9ib5czal.jpg").open
     @profile = Profile.new
+    @profile.photo.attach(io: user_one_photo_file, filename: "nopic", content_type: "image/png")
   end
 
   def create
-    @user = current_user
     @profile = Profile.new(set_params)
-    @profile.user = @user
-    @profile.save!
-    # @user.profile = @profile
+    @profile.user = current_user
+    if @profile.save!
+      redirect_to profiles_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
