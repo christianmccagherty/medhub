@@ -1,6 +1,10 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @appointments = Appointment.where(user: current_user)
+  end
+
   def create
     doctor = Doctor.find(params[:doctor_id])
     appointment = doctor.appointments.new(appointment_params)
@@ -15,6 +19,18 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def update
+    @appointment = Appointment.find(params[:id])
+    @appointment.update(appointment_params)
+    @appointment.save
+    redirect_to appointments_path
+  end
+
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    redirect_to appointments_path, status: :see_other
+  end
   private
 
   def appointment_params
