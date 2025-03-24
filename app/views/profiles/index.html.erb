@@ -1,13 +1,26 @@
-<div class="clinic-card-container" style="width: 70%">
-  <div class="clinic-card-flex">
-    <div class="clinic-card-info">
-      <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
+<div class="profile-card-container">
+
+  <div class="profile-card-flex">
+    <div class="profile-card-info">
+      <h1><i class="fa-solid fa-user"></i> <%= @profile.first_name %> <%= @profile.last_name %></h1>
       <h3><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></h3>
-      <h3>Born on: <%= @profile.dob.strftime('%B/%d/%Y') %> </h3>
+      <h3><i class="fa-regular fa-calendar"></i> <%= @profile.dob.strftime('%B/%d/%Y') %> </h3>
     </div>
+
+
+    <div class="profile-display-picture">
+      <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
+        <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA" %>
+      <% else %>
+        <%= cl_image_tag current_user.profile.photo.key%>
+      <% end %>
+    </div>
+
   </div>
 
-  <div class="clinic-card-extras">
+
+
+  <div class="profile-card-extras">
     <div class="clinic-card-socials">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>
@@ -15,29 +28,34 @@
       <i class="fab fa-twitter"></i>
       <i class="fab fa-github"></i>
     </div>
-      <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
-        <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA" %>
-      <% else %>
-        <%= cl_image_tag current_user.profile.photo.key, height: 300, width: 400%>
-      <% end %>
-    </div>
   </div>
-    <%= link_to "Edit password", edit_user_registration_path, class: "btn btn-primary m-3" %>
-
-
 
 </div>
 
-<h1 style="margin-top: 100px; margin-left: 100px">Add display picture or Document</h1>
 
-<div class="clinic-card-container">
-  <div class="clinic-card-flex">
-    <div class="clinic-card-info" style="margin-right: 60px" >
-      <%= simple_form_for(@profile) do |f| %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :document, as: :file %>
-        <%= f.submit %>
-      <% end %>
+
+
+
+
+
+
+<div class="profile-options" data-controller="toggle">
+  <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary m-3" %>
+  <button class="btn btn-primary" data-action="click->toggle#fire">Edit Personal Details</button>
+
+  <div class="clinic-card-container d-none" data-toggle-target="toggleableElement">
+    <div class="clinic-card-flex">
+      <div class="clinic-card-info" style="margin-right: 60px" >
+        <%= simple_form_for(@profile) do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :address %>
+          <%= f.input :dob %>
+          <%= f.input :language, collection: ["English", "French", "German", "Portuguese", "Spanish", "Turkish", "Italian", "Klingon", "Greek"] %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

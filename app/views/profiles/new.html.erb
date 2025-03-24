@@ -3,5 +3,6 @@
         <%= f.input :last_name %>
         <%= f.input :address %>
         <%= f.input :dob %>
+        <%= f.input :language, collection: ["English", "French", "German", "Portuguese", "Spanish", "Turkish", "Italian", "Klingon", "Greek"] %>
         <%= f.submit %>
       <% end %>
