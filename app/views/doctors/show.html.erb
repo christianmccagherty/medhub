@@ -43,13 +43,7 @@
         <p>This doctor has not set their schedule yet.</p>
     <% end %>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-success"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
-
-    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true do |f| %>
+    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true, data: { turbo: false } do |f| %>
       <div class="form-group mb-3">
         <%= f.label :time, "Select Date & Time*" %>
         <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>

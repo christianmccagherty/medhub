@@ -1,0 +1,20 @@
+<div class="container mt-5 confirmation-page">
+  <h2 class="mb-4 text-center">Confirm Your Appointment</h2>
+
+  <div class="card mb-3">
+    <p><strong>Doctor:</strong> Dr. <%= @appointment.doctor.user.profile.first_name %> <%= @appointment.doctor.user.profile.last_name %></p>
+    <p><strong>Clinic:</strong> <%= @appointment.doctor.clinic.name %></p>
+    <p><strong>Address:</strong> <%= @appointment.doctor.clinic.address %></p>
+    <p><strong>Date & Time:</strong> <%= @appointment.time.strftime("%A, %d %B %Y at %H:%M") %></p>
+  </div>
+
+  <%= form_with model: @appointment, url: appointments_path(confirm: true), method: :post, local: true, data: { turbo: false } do |f| %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :doctor_id, value: @appointment.doctor_id %>
+
+    <div class="mt-4 d-flex gap-3 justify-content-center">
+      <%= f.submit "✅ Confirm Booking", class: "btn btn-confirm" %>
+      <%= link_to "Cancel", doctor_path(@appointment.doctor), class: "btn btn-cancel" %>
+    </div>
+  <% end %>
+</div>
