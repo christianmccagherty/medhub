@@ -15,13 +15,14 @@
       <i class="fab fa-twitter"></i>
       <i class="fab fa-github"></i>
     </div>
-    <div style="margin-right: 50px, width: 350px, height: 300px">
-      <% if @profile.photo.key %>
-        <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+      <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
+        <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA" %>
+      <% else %>
+        <%= cl_image_tag current_user.profile.photo.key, height: 300, width: 400%>
       <% end %>
     </div>
-    <%= link_to "Edit password", edit_user_registration_path, class: "btn btn-primary m-3" %>
   </div>
+    <%= link_to "Edit password", edit_user_registration_path, class: "btn btn-primary m-3" %>
 
 
 

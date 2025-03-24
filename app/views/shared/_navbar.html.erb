@@ -20,15 +20,14 @@
           <li class="nav-item">
             <%= link_to "Profile", profiles_path, class: "nav-link" if current_user.profile.present? %>
           </li>
-
-          <li class="nav-item dropdown ms-3">
-            <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% unless current_user.profile.nil? %>
-                <%= cl_image_tag current_user.profile.photo.key, class: "avatar", alt: "dropdown menu" %>
-              <% else %>
-                <%= image_tag asset_url("DrCraigplaceholder.png"), class: "avatar", alt: "User menu" %>
-              <% end %>
-            </a>
+      <li class="nav-item dropdown ms-3">
+        <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
+            <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA", class: "avatar", alt: "User menu" %>
+          <% else %>
+            <%= cl_image_tag current_user.profile.photo.key, class: "avatar", alt: "dropdown menu" %>
+          <% end %>
+        </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <% if current_user.profile.present? %>

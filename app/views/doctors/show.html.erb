@@ -28,7 +28,8 @@
 
 
   <div class="info-section">
-    <h3>Book an Appointment - Available Time Slot</h3>
+    <h3 class="mb-3">Book an Appointment</h3>
+    <p>Select from the doctor's available times below. You can only book during working hours.</p>
 
     <% if @doctor.schedule.present? %>
         <ul>
@@ -42,25 +43,25 @@
         <p>This doctor has not set their schedule yet.</p>
     <% end %>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-success"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
-
-    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true do |f| %>
-      <div class="form-group">
-        <label for="appointment_time">Select Date & Time</label>
-        <%= f.datetime_local_field :time, class: "form-control", required: true %>
+    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true, data: { turbo: false } do |f| %>
+      <div class="form-group mb-3">
+        <%= f.label :time, "Select Date & Time*" %>
+        <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>
       </div>
 
       <%= f.hidden_field :doctor_id, value: @doctor.id %>
 
-      <div class="form-group mt-3">
-        <%= f.submit "Book Appointment", class: "btn btn-primary" %>
+      <div class="form-group">
+        <%= f.submit "Book Appointment", class: "btn", style: "background-color: #FFB433; color: white;" %>
       </div>
     <% end %>
   </div>
+
+  <script type="application/json" id="available-slots-json">
+    <%= @available_time_slots.map { |slot| slot.strftime("%Y-%m-%dT%H:%M:%S") }.to_json.html_safe %>
+  </script>
+
+  <small class="text-muted">*Only available slots within the next 2 months are shown.</small>
 
 
   <% unless @reviews == nil %>
