@@ -1,6 +1,7 @@
 # db/seeds.rb
 require 'faker'
 require "open-uri"
+
 user_one_photo_file = URI.parse("https://flouringkitchen.com/wp-content/uploads/2023/07/BW1A4089-3.jpg").open
 
 puts "Cleaning up database..."
