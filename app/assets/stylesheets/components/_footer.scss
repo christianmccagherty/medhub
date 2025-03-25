@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+<<<<<<< HEAD
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
@@ -10,21 +11,38 @@
   position: relative;
   bottom: 0;
   margin-top: 100px;
+=======
+  padding: 20px 50px;
+  min-height: 60px; // This keeps consistency across pages
+  width: 100%;
+  color: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0; // Prevent it from collapsing on small pages
+  box-sizing: border-box;
+
+  p {
+    margin: 0;
+  }
+>>>>>>> master
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: black;
   opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
-  padding: 0px 10px;
+  padding: 0 10px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
 }
-.footer-links a:hover {
-  opacity: 1;
-}
+
 .footer .fa-heart {
   color: #D23333;
 }

@@ -3,6 +3,11 @@
         <%= f.input :last_name %>
         <%= f.input :address %>
         <%= f.input :dob %>
+<<<<<<< HEAD
         <%= f.input :language, collection: ["English", "French", "German", "Portuguese", "Spanish", "Turkish", "Italian", "Klingon", "Greek"] %>
         <%= f.submit class: "btn btn-primary" %>
+=======
+        <%= f.input :language_ids, collection: Language.all.pluck(:name, :id), as: :check_boxes, label: "Languages you speak", item_wrapper_class: "d-inline-block me-3 mb-2" %>
+        <%= f.submit %>
+>>>>>>> master
       <% end %>

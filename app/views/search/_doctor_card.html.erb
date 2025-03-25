@@ -5,8 +5,15 @@
       <h5 class="doctor-name">
         Dr. <%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %>
       </h5>
-      <p><strong>Specialties:</strong> <%= doctor.specialties.map(&:name).join(", ") %></p>
+      <%= doctor.specialties.map(&:name).join(", ") %></p>
       <p><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
+      <div class="mb-2">
+        <% doctor.languages.each do |language| %>
+          <span class="me-1"><%= language_flag(language.name) %></span>
+        <% end %>
+      </div>
+
+
       <%= link_to "View Profile", doctor_path(doctor), class: "btn btn-primary mt-2" %>
     </div>
   </div>

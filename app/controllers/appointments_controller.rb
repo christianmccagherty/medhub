@@ -6,16 +6,22 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    doctor = Doctor.find(params[:doctor_id])
-    appointment = doctor.appointments.new(appointment_params)
-    appointment.user_id = current_user.id
+    if params[:confirm] == "true"
+      @appointment = Appointment.new(appointment_params)
+      @appointment.user = current_user
 
-    if appointment.save
-      flash[:notice] = "Appointment booked successfully"
-      redirect_to doctor_path(doctor)
+      if @appointment.save
+        redirect_to appointments_path
+      else
+        render :confirm
+      end
+
     else
-      flash[:alert] = "Failed to book appointment"
-      redirect_to doctor_path(doctor)
+      doctor = Doctor.find(params[:doctor_id])
+      @appointment = doctor.appointments.new(appointment_params)
+      @appointment.user_id = current_user.id
+
+      render :confirm
     end
   end
 
@@ -34,6 +40,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:time)
+    params.require(:appointment).permit(:time, :doctor_id)
   end
 end

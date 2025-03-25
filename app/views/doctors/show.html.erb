@@ -18,6 +18,14 @@
     <% end %>
   </div>
 
+    <div class="info-section">
+      <div>
+        <% @doctor.languages.each do |language| %>
+          <span class="me-2 fs-4"><%= language_flag(language.name) %></span>
+        <% end %>
+      </div>
+    </div>
+
   <div class="info-section">
     <h3>Doctor's Description</h3>
     <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in radiology, specializing in patient care and medical research.</p>
@@ -43,13 +51,7 @@
         <p>This doctor has not set their schedule yet.</p>
     <% end %>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-success"><%= flash[:notice] %></div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-danger"><%= flash[:alert] %></div>
-    <% end %>
-
-    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true do |f| %>
+    <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true, data: { turbo: false } do |f| %>
       <div class="form-group mb-3">
         <%= f.label :time, "Select Date & Time*" %>
         <%= f.text_field :time, class: "form-control", required: true, data: { controller: "datepicker" } %>
