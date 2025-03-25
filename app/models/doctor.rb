@@ -1,12 +1,18 @@
 class Doctor < ApplicationRecord
+  has_neighbors :embedding
+  after_create :set_embedding
   belongs_to :user
   belongs_to :clinic
   has_many :appointments
   has_one :schedule
-  has_and_belongs_to_many :specialties
+  has_many :doctor_specialties
+  has_many :specialties, through: :doctor_specialties
   has_many :doctor_languages, dependent: :destroy
   has_many :languages, through: :doctor_languages
   has_many :reviews
+  delegate :full_name, to: :user
+  delegate :address, to: :clinic
+
   def average_doctor_rating
     return "unrated" if reviews.size == 0
     rating = reviews.map(&:rating).sum / reviews.size
@@ -37,5 +43,19 @@ class Doctor < ApplicationRecord
     end
 
     slots
+  end
+
+  private
+
+  def set_embedding
+    client = OpenAI::Client.new
+    response = client.embeddings(
+      parameters: {
+        model: 'text-embedding-3-small',
+        input: "Doctor: #{full_name}. Specialty: #{}. Language: #{languages.pluck(:name).join(" ")}. Address: #{address}"
+      }
+    )
+    embedding = response['data'][0]['embedding']
+    update(embedding: embedding)
   end
 end
