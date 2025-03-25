@@ -8,12 +8,14 @@ puts "Cleaning up database..."
 Appointment.destroy_all
 Schedule.destroy_all
 Review.destroy_all
-Doctor.destroy_all
-Profile.destroy_all
-User.destroy_all
-Clinic.destroy_all
+DiseaseSpecialty.destroy_all
+DoctorSpecialty.destroy_all
 Disease.destroy_all
 Specialty.destroy_all
+Doctor.destroy_all
+Clinic.destroy_all
+Profile.destroy_all
+User.destroy_all
 puts "Database cleaned."
 
 puts "Seeding data..."
@@ -59,9 +61,13 @@ Disease.create!(disease_specialty_map.keys.map { |disease_name| { name: disease_
 puts "Created #{Disease.count} diseases."
 
 disease_specialty_map.each do |disease_name, specialty_names|
+  puts "a"
   disease = Disease.find_by(name: disease_name)
+  puts "b"
   specialty_names.each do |specialty_name|
+    puts "c"
     specialty = Specialty.find_by(name: specialty_name)
+    puts "d"
     disease.specialties << specialty if specialty
   end
 end
