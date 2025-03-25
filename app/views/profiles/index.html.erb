@@ -8,6 +8,15 @@
     </div>
 
 
+<<<<<<< HEAD
+    <div class="profile-display-picture">
+      <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
+        <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA" %>
+      <% else %>
+        <%= cl_image_tag current_user.profile.photo.key, width: 295, height: 295, crop: :fill, gravity: :face%>
+      <% end %>
+    </div>
+=======
       <div class="profile-display-picture">
         <% if current_user.profile.present? && current_user.profile.photo.attached? %>
           <%= cl_image_tag current_user.profile.photo.key, class: "img-fluid rounded" %>
@@ -15,6 +24,7 @@
           <%= image_tag "pp.png", class: "img-fluid rounded" %>
         <% end %>
       </div>
+>>>>>>> master
 
   </div>
 
@@ -43,9 +53,9 @@
   <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary m-3" %>
   <button class="btn btn-primary" data-action="click->toggle#fire">Edit Personal Details</button>
 
-  <div class="clinic-card-container d-none" data-toggle-target="toggleableElement">
-    <div class="clinic-card-flex">
-      <div class="clinic-card-info" style="margin-right: 60px" >
+  <div class="profile-form-container d-none" data-toggle-target="toggleableElement">
+    <div class="profile-form-flex">
+      <div class="profile-form-info" style="margin-right: 60px" >
         <%= simple_form_for(@profile) do |f| %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
@@ -53,7 +63,7 @@
           <%= f.input :dob %>
           <%= f.input :language_ids, collection: Language.all.pluck(:name, :id), as: :check_boxes, label: "Languages you speak" %>
           <%= f.input :photo, as: :file %>
-          <%= f.submit %>
+          <%= f.submit class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
