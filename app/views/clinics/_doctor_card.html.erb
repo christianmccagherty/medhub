@@ -1,5 +1,5 @@
 <% @clinic.doctors.each do |doctor| %>
-  <% profile = Profile.find(doctor.user_id) %>
+  <% profile = doctor.user.profile %>
   <div class="doctor-card-container">
     <%= link_to doctor_path(doctor) do %>
       <div class="doctor-flex-container">
@@ -13,7 +13,7 @@
       </div>
 
       <div class="doctor-card-specialty">
-        <p>Specialty:</p>
+        <p>Specialty: <%= doctor.specialties.first.name %></p>
       </div>
 
     <% end %>
