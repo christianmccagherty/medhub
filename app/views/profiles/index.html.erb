@@ -8,15 +8,6 @@
     </div>
 
 
-<<<<<<< HEAD
-    <div class="profile-display-picture">
-      <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
-        <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA" %>
-      <% else %>
-        <%= cl_image_tag current_user.profile.photo.key, width: 295, height: 295, crop: :fill, gravity: :face%>
-      <% end %>
-    </div>
-=======
       <div class="profile-display-picture">
         <% if current_user.profile.present? && current_user.profile.photo.attached? %>
           <%= cl_image_tag current_user.profile.photo.key, class: "img-fluid rounded" %>
@@ -24,7 +15,6 @@
           <%= image_tag "pp.png", class: "img-fluid rounded" %>
         <% end %>
       </div>
->>>>>>> master
 
   </div>
 
