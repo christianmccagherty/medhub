@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :appointments, only: [:index, :update, :destroy, :create]
   resources :profiles
+  resources :questions, only: [:index, :create]
 end
