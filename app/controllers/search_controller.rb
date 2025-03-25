@@ -16,12 +16,18 @@ class SearchController < ApplicationController
                        .per(9)
 
     elsif search_type == 'doctors'
-      @results = Doctor.joins(:user, :specialties, doctor_languages: :language)
-                       .where(doctor_languages: { language_id: user_language_ids })
-                       .where('LOWER(specialties.name) LIKE :q OR LOWER(users.email) LIKE :q OR LOWER(users.phone_number) LIKE :q', q: "%#{query}%")
-                       .distinct
-                       .page(params[:page])
-                       .per(9)
+      @results = Doctor.joins(:user, :profile, :specialties, doctor_languages: :language)
+                 .joins(specialties: :diseases)
+                 .where(doctor_languages: { language_id: user_language_ids })
+                 .where(
+                   'LOWER(specialties.name) LIKE :q OR LOWER(users.email) LIKE :q OR ' \
+                   'LOWER(users.phone_number) LIKE :q OR LOWER(profiles.first_name) LIKE :q OR ' \
+                   'LOWER(profiles.last_name) LIKE :q OR LOWER(diseases.name) LIKE :q',
+                   q: "%#{query}%"
+                 )
+                 .distinct
+                 .page(params[:page])
+                 .per(9)
     else
       @results = []
     end
