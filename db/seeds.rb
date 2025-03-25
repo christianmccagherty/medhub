@@ -18,14 +18,14 @@ puts "Database cleaned."
 
 puts "Seeding data..."
 
-# === Create Langauges ===
+# === Create Languages ===
 
-langauges = [
+languages = [
   "English", "French", "German", "Portuguese", "Spanish", "Turkish", "Italian", "Klingon", "Greek"
 ]
 
-langauges.each { |langauge| Langauge.create!(name: langauge) }
-puts "Created #{langauges.count} langauges."
+languages.each { |language| Language.create!(name: language) }
+puts "Created #{languages.count} languages."
 
 # === Create Specialties ===
 
@@ -96,6 +96,7 @@ doctors = []
     user_id: user.id
   )
   profile.photo.attach(io: user_one_photo_file, filename: "cavendish.png", content_type: "image/png")
+
   profile.save!
   doctor = Doctor.create!(
     user_id: user.id,
@@ -107,10 +108,11 @@ end
 puts "Created #{doctors.count} doctors with mapped specialties."
 
 doctors.each do |doctor|
-  (1..3).to_a.sample.times { DoctorLangauge.create!(doctor: doctor, langauge: Langauge.all.sample) }
+  puts "making doctorlangauges"
+  (1..3).to_a.sample.times { DoctorLanguage.create!(doctor: doctor, language: Language.all.sample) }
 end
 
-puts "Added langauges to doctors"
+puts "Added languages to doctors"
 
 # === Create Patients ===
 patients = []
@@ -180,3 +182,7 @@ end
 puts "Created 10 appointments."
 
 puts "Seeding completed!"
+
+Profile.all.each do |profile|
+  (1..3).to_a.sample.times { ProfileLanguage.create!(profile: profile, language: Language.all.sample) }
+end
