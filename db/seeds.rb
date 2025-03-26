@@ -7,6 +7,8 @@ DiseaseSpecialty.destroy_all
 DoctorSpecialty.destroy_all
 Disease.destroy_all
 Specialty.destroy_all
+ProfileLanguage.destroy_all
+DoctorLanguage.destroy_all
 Language.destroy_all
 Doctor.destroy_all
 Clinic.destroy_all
