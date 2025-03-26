@@ -1,3 +1,11 @@
+<div class="clinic-show-banner">
+  <% if @clinic.photo.attached? %>
+    <%= cl_image_tag @clinic.photo.key, transformation: [
+              { gravity: "auto", crop: "auto" }
+            ] %>
+  <% end %>
+</div>
+
 <div class="clinic-card-container">
   <div class="clinic-card-flex">
 

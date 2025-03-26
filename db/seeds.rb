@@ -30,6 +30,28 @@ twentyfive = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v17429
 twentysix = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939297/bermix-studio-ODM_VsTM2QQ-unsplash_pvtsap.jpg").open
 twentyseven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939296/anna-keibalo-9vH-wWpUP3g-unsplash_dk3tku.jpg").open
 
+milano_pic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/Milano_c9wr8t.png").open
+london_bridge_pic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/London_Bridge_zyvo2y.jpg").open
+
+onepic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977529/petr-magera-HuWm7malJ18-unsplash_mcl0ck.jpg").open
+twopic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977529/smallbox-FFA8yd4OynY-unsplash_rmud10.jpg").open
+threepic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977529/Prague_na0h8g.jpg").open
+fourpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977529/stuart-poulton-Cyw1t03KMGk-unsplash_z7c5ks.jpg").open
+fivepic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977528/Rando1_qnnu6d.jpg").open
+sixpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/maxim-tirdea-xayCTz6N2nM-unsplash_m8eht7.jpg").open
+sevenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/martha-dominguez-de-gouveia-nMyM7fxpokE-unsplash_rxecfb.jpg").open
+eightpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977526/Dentist_f4jp4q.jpg").open
+ninepic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977526/cdn-pages-xM_1ZYHOc9E-unsplash_v8gsp6.jpg").open
+tenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977526/cdn-pages-xM_1ZYHOc9E-unsplash_v8gsp6.jpg").open
+elevenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977525/arseny-togulev-DE6rYp1nAho-unsplash_piz25t.jpg").open
+twelvepic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977525/cdc-uN8TV9Pw2ik-unsplash_ihlgjt.jpg").open
+thirteenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/jose-losada-HIB5kZNkVjo-unsplash_w3foua.jpg").open
+fourteenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/national-cancer-institute-U7hHC8uCXkY-unsplash_x4mos0.jpg").open
+fifteenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977525/akram-huseyn-brbF5FSnSgI-unsplash_vi6fzf.jpg").open
+sixteenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977525/cdc-Y2lUjUiay-o-unsplash_yas8sp.jpg").open
+seventeenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977527/jc-gellidon-UIp163xCV6w-unsplash_r310l1.jpg").open
+eighteenpic = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742977525/hush-naidoo-jade-photography-yo01Z-9HQAw-unsplash_dx7zwy.jpg").open
+
 
 
 puts "Cleaning up database..."
@@ -142,7 +164,7 @@ centre_medical_saint = Clinic.new(
   name: "Centre Médical Saint",
   address: "128 Rue Saint-Honoré, 75001 Paris, France"
 )
-
+centre_medical_saint.photo.attach(io: onepic, filename: "milano")
 francois = User.new(
   email: "francois.dupont@cmsaint-honore.fr",
   password: "password",
@@ -191,7 +213,7 @@ clinica_salud_integral = Clinic.new(
   name: "Clínica Salud Integral",
   address: "Calle de Alcalá 212, 28028 Madrid, Spain"
 )
-
+clinica_salud_integral.photo.attach(io: twopic, filename: "milano")
 javier = User.new(
   email: "javier.fernandez@csaludintegral.es",
   password: "password",
@@ -241,7 +263,7 @@ praxisgemeinschaft_viktualienmarkt = Clinic.new(
   name: "Praxisgemeinschaft am Viktualienmarkt",
   address: "Frauenstraße 12, 80469 München, Germany"
 )
-
+praxisgemeinschaft_viktualienmarkt.photo.attach(io: threepic, filename: "milano")
 klaus = User.new(
   email: "klaus.mueller@praxisgemeinschaft.de",
   password: "password",
@@ -288,8 +310,11 @@ puts "Created Praxisgemeinschaft am Viktualienmarkt"
 
 studio_medico_brera = Clinic.new(
   name: "Studio Medico Brera",
-  address: "Via Brera 28, 20121 Milano MI, Italy"
+  address: "Via Brera 28, 20121 Milano MI, Italy",
+  description: "Studio Medico Brera, located in the historic and vibrant Brera district of Milan, provides exceptional healthcare services in a wide array of specialties including cardiology, dermatology, pediatrics, and orthopedics. Our team of highly experienced doctors and specialists are committed to delivering personalized care tailored to each patient's needs.
+With a focus on advanced medical technology and a patient-first approach, we offer consultations, diagnostic services, and specialized treatments in a comfortable and professional setting. Our clinic is easily accessible and is designed to ensure that your healthcare journey is as smooth and efficient as possible. At Studio Medico Brera, we believe in fostering long-term relationships with our patients, empowering them to take control of their health with the support of our trusted medical team."
 )
+studio_medico_brera.photo.attach(io: milano_pic, filename: "milano")
 # ----------------------------PASTE HERE--------------------------------------------------
 
 lorenzo = User.new(
@@ -535,7 +560,7 @@ scandinavian_health_group = Clinic.new(
   name: "Scandinavian Health Group",
   address: "Drottninggatan 88, 111 36 Stockholm, Sweden"
 )
-
+scandinavian_health_group.photo.attach(io: fourpic, filename: "milano")
 puts "Created Scandinavian Health Group"
 
 erik = User.new(
@@ -585,7 +610,7 @@ centre_sante_jean_jaures = Clinic.new(
   name: "Centre de Santé Jean Jaurès",
   address: "18 Avenue Jean Jaurès, 69007 Lyon, France"
 )
-
+centre_sante_jean_jaures.photo.attach(io: fivepic, filename: "milano")
 lucie = User.new(
   email: "lucie.bernard@csjeanjaures.fr",
   password: "password",
@@ -636,7 +661,7 @@ medinova_lisboa = Clinic.new(
   name: "Medinova Lisboa",
   address: "Av. da Liberdade 245, 1250-143 Lisboa, Portugal"
 )
-
+medinova_lisboa.photo.attach(io: sixpic, filename: "milano")
 joao = User.new(
   email: "joao.silva@medinova.pt",
   password: "password",
@@ -687,7 +712,7 @@ medihaus_zurich = Clinic.new(
   name: "MediHaus Zurich",
   address: "Dufourstrasse 45, 8008 Zürich, Switzerland"
 )
-
+medihaus_zurich.photo.attach(io: sevenpic, filename: "milano")
 lukas = User.new(
   email: "lukas.mueller@medihaus.ch",
   password: "password",
@@ -740,8 +765,11 @@ puts "Created MediHaus Zurich"
 
 london_bridge_hospital = Clinic.create!(
   name: "London Bridge Hospital",
-  address: "27 Tooley St, London SE1 2PR"
+  address: "27 Tooley St, London SE1 2PR",
+  description: "Located in the heart of London, London Bridge Hospital offers world-class healthcare services in a range of specialties, including cardiology, neurology, dermatology, and more. Our dedicated team of medical professionals works closely with patients to provide personalized, compassionate care. Whether you need a routine check-up or specialized treatment, London Bridge Hospital is committed to providing the highest standards of care, using state-of-the-art facilities and the latest medical technologies.
+Conveniently situated near London Bridge Station, we offer easy access to both local and international patients. Our team of experienced doctors and specialists are available for consultations, diagnostic tests, and treatments. We pride ourselves on our commitment to patient safety, comfort, and overall well-being, ensuring that every visit to our hospital is as smooth and stress-free as possible."
 )
+london_bridge_hospital.photo.attach(io: london_bridge_pic, filename: "london_bridge")
 #------------------------- PASTE HERE -------------------------------------
 
 priya = User.new(
@@ -972,7 +1000,7 @@ centrum_medyczne_nowa_zdrowie = Clinic.new(
   name: "Centrum Medyczne Nowa Zdrowie",
   address: "ul. Marszałkowska 45/49, 00-648 Warszawa, Poland"
 )
-
+centrum_medyczne_nowa_zdrowie.photo.attach(io: eightpic, filename: "milano")
 krzysztof = User.new(
   email: "krzysztof.nowak@cmnowazdrowie.pl",
   password: "password",
@@ -1021,7 +1049,7 @@ cabinet_medical_parc = Clinic.new(
   name: "Cabinet Médical du Parc",
   address: "7 Rue du Parc, 67000 Strasbourg, France"
 )
-
+cabinet_medical_parc.photo.attach(io: ninepic, filename: "milano")
 laurent = User.new(
   email: "laurent.petit@cabinetmedicalparc.fr",
   password: "password",
@@ -1071,7 +1099,7 @@ centre_hospitalier_sainte_claire = Clinic.new(
   name: "Centre Hospitalier Sainte-Claire",
   address: "Rue de Lausanne 43, 1201 Genève, Switzerland"
 )
-
+centre_hospitalier_sainte_claire.photo.attach(io: tenpic, filename: "milano")
 puts "Created Centre Hospitalier Sainte-Claire"
 #
 
@@ -1079,7 +1107,7 @@ clinica_santa_chiara_torino = Clinic.new(
   name: "Clinica Santa Chiara Torino",
   address: "Via Giuseppe Garibaldi 12, 10122 Torino TO, Italy"
 )
-
+clinica_santa_chiara_torino.photo.attach(io: elevenpic, filename: "milano")
 matteo = User.new(
   email: "matteo.giordano@clinicasantachiara.it",
   password: "password",
@@ -1128,7 +1156,7 @@ hausaerztezentrum_koeln = Clinic.new(
   name: "Hausärztezentrum Altstadt Köln",
   address: "Alter Markt 9, 50667 Köln, Germany"
 )
-
+hausaerztezentrum_koeln.photo.attach(io: twelvepic, filename: "milano")
 anna = User.new(
   email: "anna.becker@hausarztzentrum-koeln.de",
   password: "password",
@@ -1177,7 +1205,7 @@ prahamed_specialist_center = Clinic.new(
   name: "PrahaMed Specialist Center",
   address: "Vodičkova 28, 110 00 Praha 1, Czech Republic"
 )
-
+prahamed_specialist_center.photo.attach(io: thirteenpic, filename: "milano")
 jan = User.new(
   email: "jan.novak@prahamed.cz",
   password: "password",
@@ -1226,7 +1254,7 @@ centro_medico_la_barceloneta = Clinic.new(
   name: "Centro Médico La Barceloneta",
   address: "Carrer de la Maquinista 10, 08003 Barcelona, Spain"
 )
-
+centro_medico_la_barceloneta.photo.attach(io: fourteenpic, filename: "milano")
 alejandro = User.new(
   email: "alejandro.gonzalez@cmbarceloneta.es",
   password: "password",
@@ -1275,7 +1303,7 @@ clinique_du_canal_saintmartin = Clinic.new(
   name: "Clinique du Canal Saint-Martin",
   address: "92 Quai de Jemmapes, 75010 Paris, France"
 )
-
+clinique_du_canal_saintmartin.photo.attach(io: fifteenpic, filename: "milano")
 lucien = User.new(
   email: "lucien.bernard@canal-saint-martin.fr",
   password: "password",
@@ -1324,7 +1352,7 @@ centro_medico_firenze = Clinic.new(
   name: "Centro Medico Firenze",
   address: "Viale dei Mille 30, 50131 Firenze FI, Italy"
 )
-
+centro_medico_firenze.photo.attach(io: sixteenpic, filename: "milano")
 isabella = User.new(
   email: "isabella.rossi@centromedicofirenze.it",
   password: "password",
@@ -1373,7 +1401,7 @@ medpoint_antwerpen = Clinic.new(
   name: "MedPoint Antwerpen",
   address: "Mechelsesteenweg 64, 2018 Antwerpen, Belgium"
 )
-
+medpoint_antwerpen.photo.attach(io: seventeenpic, filename: "milano")
 emma = User.new(
   email: "emma.dewit@medpoint.be",
   password: "password",
@@ -1423,7 +1451,7 @@ klinik_am_schlossgarten = Clinic.new(
   name: "Klinik am Schlossgarten",
   address: "Schlossstraße 3, 70176 Stuttgart, Germany"
 )
-
+klinik_am_schlossgarten.photo.attach(io: eighteenpic, filename: "milano")
 matthias = User.new(
   email: "matthias.schmidt@klinik-schlossgarten.de",
   password: "password",
