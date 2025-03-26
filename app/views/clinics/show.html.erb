@@ -1,10 +1,13 @@
+
 <%= render "clinic_card" %>
 
 
 <%= render "doctor_list" %>
 
 <div class="info-1">
-  <h2>Clinic's description</h2>
+  <% unless @clinic.description.nil? %>
+    <p><%= @clinic.description %></p>
+  <% end %>
 </div>
 
 
