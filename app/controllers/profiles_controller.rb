@@ -7,9 +7,9 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    user_one_photo_file = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742813684/development/r9patyczsmcryvu4uq3c9ib5czal.jpg").open
+    # user_one_photo_file = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742813684/development/r9patyczsmcryvu4uq3c9ib5czal.jpg").open
     @profile = Profile.new
-    @profile.photo.attach(io: user_one_photo_file, filename: "nopic", content_type: "image/png")
+    # @profile.photo.attach(io: user_one_photo_file, filename: "nopic", content_type: "image/png")
   end
 
   def create
