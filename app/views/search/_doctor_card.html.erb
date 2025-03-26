@@ -1,26 +1,36 @@
-<div class="col-md-4 mb-4">
+<div class="col d-flex justify-content-center">
   <div class="doctor-card card shadow-sm">
-    <% if @results.first.user.profile.photo.attached? %>
-      <%= cl_image_tag doctor.user.profile.photo.key, transformation: [
-              { aspect_ration: "1:1", gravity: "auto", crop: "auto" }
-            ] %>
+      <% if doctor.user.profile.photo.attached? %>
+<%= cl_image_tag doctor.user.profile.photo.key,
+  width: 300,
+  height: 300,
+  crop: "thumb",
+  gravity: "face",
+  fetch_format: :auto,
+  quality: "auto:best",
+  class: "doctor-image" %>
+
+
     <% else %>
-      <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
+      <%= image_tag "pp.png", width: 250, height: 250, class: "card-img-top rounded", alt: "No photo available" %>
     <% end %>
     <div class="card-body">
       <h5 class="doctor-name">
-        Dr. <%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %>
+        <%= link_to "Dr. #{doctor.user.profile.first_name} #{doctor.user.profile.last_name}", doctor_path(doctor), class: "doctor-link" %>
       </h5>
-      <%= doctor.specialties.map(&:name).join(", ") %></p>
-      <p><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
+
+      <p><%= doctor.specialties.map(&:name).join(", ") %></p>
+      <% if doctor.clinic.present? %>
+        <p><%= link_to doctor.clinic.name, clinic_path(doctor.clinic), class: "clinic-link" %></p>
+      <% else %>
+        <p>No clinic assigned</p>
+      <% end %>
+
       <div class="mb-2">
         <% doctor.languages.each do |language| %>
           <span class="me-1"><%= language_flag(language.name) %></span>
         <% end %>
       </div>
-
-
-      <%= link_to "View Profile", doctor_path(doctor), class: "btn btn-primary mt-2" %>
     </div>
   </div>
 </div>

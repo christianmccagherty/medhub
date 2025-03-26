@@ -13,3 +13,13 @@ body {
 .main-content {
   flex: 1;
 }
+
+.row-cols-md-3 {
+  justify-content: center !important;
+}
+
+.row {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important; // forces row to fit around its children
+}

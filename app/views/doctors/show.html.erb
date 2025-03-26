@@ -1,16 +1,13 @@
 <div class="container doctor-show">
-
   <div class="profile-header text-center">
     <% if @doctor.user.profile.photo.attached? %>
-      <%= cl_image_tag @doctor.user.profile.photo.key, transformation: [
-              { gravity: "auto", crop: "auto" }
-            ] %>
+      <%= cl_image_tag @doctor.user.profile.photo.key, width: 300, height: 300, crop: "thumb", gravity: "face", radius: "max", quality: "auto", fetch_format: "auto", class: "rounded-circle" %>
     <% else %>
-      <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
+      <%= image_tag "pp.png", width: 300, height: 300, class: "rounded-circle", alt: "No photo available" %>
     <% end %>
+
     <h1 class="doctor-name"><%= @doctor.user.profile.first_name %> <%= @doctor.user.profile.last_name %></h1>
     <p class="text-muted specialty">Radiology</p>
-
   </div>
 
   <div class="info-section">
@@ -24,13 +21,13 @@
     <% end %>
   </div>
 
-    <div class="info-section">
-      <div>
-        <% @doctor.languages.each do |language| %>
-          <span class="me-2 fs-4"><%= language_flag(language.name) %></span>
-        <% end %>
-      </div>
+  <div class="info-section">
+    <div>
+      <% @doctor.languages.each do |language| %>
+        <span class="me-2 fs-4"><%= language_flag(language.name) %></span>
+      <% end %>
     </div>
+  </div>
 
   <div class="info-section">
     <h3>Doctor's Description</h3>
@@ -40,21 +37,20 @@
     <% end %>
   </div>
 
-
   <div class="info-section">
     <h3 class="mb-3">Book an Appointment</h3>
     <p>Select from the doctor's available times below. You can only book during working hours.</p>
 
     <% if @doctor.schedule.present? %>
-        <ul>
-          <li><strong>Monday:</strong> <%= @doctor.schedule.monday_start_time %> - <%= @doctor.schedule.monday_end_time %></li>
-          <li><strong>Tuesday:</strong> <%= @doctor.schedule.tuesday_start_time %> - <%= @doctor.schedule.tuesday_end_time %></li>
-          <li><strong>Wednesday:</strong> <%= @doctor.schedule.wednesday_start_time %> - <%= @doctor.schedule.wednesday_end_time %></li>
-          <li><strong>Thursday:</strong> <%= @doctor.schedule.thursday_start_time %> - <%= @doctor.schedule.thursday_end_time %></li>
-          <li><strong>Friday:</strong> <%= @doctor.schedule.friday_start_time %> - <%= @doctor.schedule.friday_end_time %></li>
-        </ul>
+      <ul>
+        <li><strong>Monday:</strong> <%= @doctor.schedule.monday_start_time %> - <%= @doctor.schedule.monday_end_time %></li>
+        <li><strong>Tuesday:</strong> <%= @doctor.schedule.tuesday_start_time %> - <%= @doctor.schedule.tuesday_end_time %></li>
+        <li><strong>Wednesday:</strong> <%= @doctor.schedule.wednesday_start_time %> - <%= @doctor.schedule.wednesday_end_time %></li>
+        <li><strong>Thursday:</strong> <%= @doctor.schedule.thursday_start_time %> - <%= @doctor.schedule.thursday_end_time %></li>
+        <li><strong>Friday:</strong> <%= @doctor.schedule.friday_start_time %> - <%= @doctor.schedule.friday_end_time %></li>
+      </ul>
     <% else %>
-        <p>This doctor has not set their schedule yet.</p>
+      <p>This doctor has not set their schedule yet.</p>
     <% end %>
 
     <%= form_with model: Appointment.new, url: doctor_appointments_path(@doctor), local: true, data: { turbo: false } do |f| %>
@@ -77,7 +73,6 @@
 
   <small class="text-muted">*Only available slots within the next 2 months are shown.</small>
 
-
   <% unless @reviews == nil %>
     <div class="info-section">
       <h3>Reviews</h3>
@@ -91,8 +86,7 @@
   <div class="info-section">
     <h3>Leave a review</h3>
     <%= simple_form_for [@doctor, @review] do |f| %>
-      <%= f.input :rating,
-        :collection => %w[1 2 3 4 5] %>
+      <%= f.input :rating, :collection => %w[1 2 3 4 5] %>
       <%= f.input :content %>
       <%= f.submit %>
     <% end %>
