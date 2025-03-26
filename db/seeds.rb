@@ -508,6 +508,8 @@ dr_alessandro = Doctor.new(
 studio_medico_brera.save!
 alessandro.save!
 alessandro_profile.save!
+dr_alessandro.update(description: "Dr. Alessandro Ferri is a highly experienced orthopedic surgeon, specializing in musculoskeletal injuries, joint replacement, and spine disorders. He takes a personalized approach to treatment, ensuring each patient receives the most effective care tailored to their needs.")
+
 dr_alessandro.specialties << Specialty.find_by(name: "Orthopedics")
 alessandro_review = Review.new(
   rating: 5,
@@ -964,7 +966,7 @@ nathaniel.save!
 nathaniel_profile.save!
 dr_nathaniel.specialties << Specialty.find_by(name: "Endocrinology")
 dr_nathaniel.save!
-
+dr_nathaniel.update(description: "Dr. Nathaniel Wright is a dedicated endocrinologist specializing in the treatment of diabetes, thyroid disorders, and hormonal imbalances. He is committed to providing evidence-based care, personalized treatment plans, and empowering patients to take control of their health.")
 
 DoctorLanguage.create!(
   doctor: dr_nathaniel,
