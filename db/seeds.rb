@@ -1,3 +1,36 @@
+require "open-uri"
+puts "parsing through doctor image urls, might take a while"
+one = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939323/vaibhav-vivian-3HIroMoyre8-unsplash_qztvmm.jpg").open
+two = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939320/pexels-tima-miroshnichenko-6234600_bo7rvc.jpg").open
+three = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939318/pexels-tima-miroshnichenko-5452292_l1xrhl.jpg").open
+four = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939314/pexels-sagar-tiwari-988598841-27298085_zqcpr5.jpg").open
+five = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321/tmvmnt-media-rm7rZYdl3rY-unsplash_qisebn.jpg").open
+six = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939313/pexels-pedrofurtadoo-28516280_sqbvlu.jpg").open
+seven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321/siednji-leon-xxP2IgMPMUQ-unsplash_dmxd1a.jpg").open
+eight = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321/roy-k-PukoW35U8JA-unsplash_t1hyos.jpg").open
+nine = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939317/pexels-thirdman-5327914_hh3zsf.jpg").open
+ten = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321/pexels-yasinaydin-15752232_t1xwd0.jpg").open
+eleven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939310/pexels-nuptune-7966285_cefekh.jpg").open
+puts "halfway through..."
+twelve = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939308/pexels-jayrinho-15960478_qepzjk.jpg").open
+thirteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939317/pexels-tima-miroshnichenko-5452195_rg9xul.jpg").open
+fourteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939322/usman-yousaf-pTrhfmj2jDA-unsplash_uq00qj.jpg").open
+fifteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939305/pexels-gustavo-fring-5888186_qxhxlt.jpg").open
+sixteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939312/pexels-pavel-danilyuk-7108283_i17sdp.jpg").open
+seventeen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939299/ozkan-guner-AduzI0N9iRI-unsplash_ofx6ky.jpg").open
+eighteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939299/jonas-kakaroto-KIPqvvTOC1s-unsplash_zikivr.jpg").open
+nineteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939299/muhammad-hicham-X4Akte569V4-unsplash_l3nuzu.jpg").open
+twenty = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939298/joey_gqsfem.jpg").open
+twentyone = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939318/pexels-thirdman-7659776_ihicfe.jpg").open
+twentytwo = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939313/pexels-rdne-6129497_ckv34h.jpg").open
+twentythree = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939301/pexels-648298123-20894637_ajov6o.jpg").open
+twentyfour = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939298/gc_k9t0zz.jpg").open
+puts "almost...."
+twentyfive = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939298/humberto-chavez-FVh_yqLR9eA-unsplash_jdulnv.jpg").open
+twentysix = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939297/bermix-studio-ODM_VsTM2QQ-unsplash_pvtsap.jpg").open
+twentyseven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939296/anna-keibalo-9vH-wWpUP3g-unsplash_dk3tku.jpg").open
+
+
 
 puts "Cleaning up database..."
 Appointment.destroy_all
@@ -125,6 +158,7 @@ francois_profile = Profile.new(
   dob: Date.new(1975, 2, 18),
   user: francois
 )
+francois_profile.photo.attach(io: one, filename: "test")
 dr_francois = Doctor.new(user: francois, clinic: centre_medical_saint)
 francois.save!
 francois_profile.save!
@@ -173,6 +207,7 @@ javier_profile = Profile.new(
   dob: Date.new(1980, 4, 22),
   user: javier
 )
+javier_profile.photo.attach(io: two, filename: "test")
 dr_javier = Doctor.new(user: javier, clinic: clinica_salud_integral)
 javier.save!
 javier_profile.save!
@@ -222,6 +257,7 @@ klaus_profile = Profile.new(
   dob: Date.new(1976, 7, 9),
   user: klaus
 )
+klaus_profile.photo.attach(io: three, filename: "test")
 dr_klaus = Doctor.new(user: klaus, clinic: praxisgemeinschaft_viktualienmarkt)
 klaus.save!
 klaus_profile.save!
@@ -271,6 +307,7 @@ lorenzo_profile = Profile.new(
   dob: Date.new(1983, 5, 6),
   user: lorenzo
 )
+lorenzo_profile.photo.attach(io: four, filename: "test")
 dr_lorenzo = Doctor.new(user: lorenzo, clinic: studio_medico_brera)
 lorenzo.save!
 lorenzo_profile.save!
@@ -311,6 +348,7 @@ elena_profile = Profile.new(
   dob: Date.new(1987, 1, 29),
   user: elena
 )
+elena_profile.photo.attach(io: five, filename: "test")
 dr_elena = Doctor.new(user: elena, clinic: studio_medico_brera)
 elena.save!
 elena_profile.save!
@@ -351,6 +389,7 @@ luca_profile = Profile.new(
   dob: Date.new(1982, 6, 17),
   user: luca
 )
+luca_profile.photo.attach(io: six, filename: "test")
 dr_luca = Doctor.new(user: luca, clinic: studio_medico_brera)
 luca.save!
 luca_profile.save!
@@ -391,6 +430,7 @@ chiara_profile = Profile.new(
   dob: Date.new(1990, 11, 5),
   user: chiara
 )
+chiara_profile.photo.attach(io: seven, filename: "test")
 dr_chiara = Doctor.new(user: chiara, clinic: studio_medico_brera)
 chiara.save!
 chiara_profile.save!
@@ -435,7 +475,7 @@ alessandro_profile = Profile.new(
   dob: Date.new(1978, 3, 10),
   user: alessandro
 )
-
+alessandro_profile.photo.attach(io: eight, filename: "test")
 dr_alessandro = Doctor.new(
   user: alessandro,
   clinic: studio_medico_brera
@@ -513,6 +553,7 @@ erik_profile = Profile.new(
   dob: Date.new(1983, 3, 14),
   user: erik
 )
+erik_profile.photo.attach(io: nine, filename: "test")
 dr_erik = Doctor.new(user: erik, clinic: scandinavian_health_group)
 erik.save!
 erik_profile.save!
@@ -560,6 +601,7 @@ lucie_profile = Profile.new(
   dob: Date.new(1985, 6, 22),
   user: lucie
 )
+lucie_profile.photo.attach(io: ten, filename: "test")
 dr_lucie = Doctor.new(user: lucie, clinic: centre_sante_jean_jaures)
 lucie.save!
 lucie_profile.save!
@@ -610,6 +652,7 @@ joao_profile = Profile.new(
   dob: Date.new(1980, 11, 25),
   user: joao
 )
+joao_profile.photo.attach(io: eleven, filename: "test")
 dr_joao = Doctor.new(user: joao, clinic: medinova_lisboa)
 joao.save!
 joao_profile.save!
@@ -660,6 +703,7 @@ lukas_profile = Profile.new(
   dob: Date.new(1979, 8, 10),
   user: lukas
 )
+lukas_profile.photo.attach(io: twelve, filename: "test")
 dr_lukas = Doctor.new(user: lukas, clinic: medihaus_zurich)
 lukas.save!
 lukas_profile.save!
@@ -715,6 +759,7 @@ priya_profile = Profile.new(
   dob: Date.new(1982, 11, 11),
   user: priya
 )
+priya_profile.photo.attach(io: thirteen, filename: "test")
 dr_priya = Doctor.new(user: priya, clinic: london_bridge_hospital)
 priya.save!
 priya_profile.save!
@@ -755,6 +800,7 @@ hassan_profile = Profile.new(
   dob: Date.new(1977, 5, 18),
   user: hassan
 )
+hassan_profile.photo.attach(io: fourteen, filename: "test")
 dr_hassan = Doctor.new(user: hassan, clinic: london_bridge_hospital)
 hassan.save!
 hassan_profile.save!
@@ -795,6 +841,7 @@ daniel_profile = Profile.new(
   dob: Date.new(1980, 6, 7),
   user: daniel
 )
+daniel_profile.photo.attach(io: fifteen, filename: "test")
 dr_daniel = Doctor.new(user: daniel, clinic: london_bridge_hospital)
 daniel.save!
 daniel_profile.save!
@@ -835,6 +882,7 @@ emily_profile = Profile.new(
   dob: Date.new(1984, 12, 9),
   user: emily
 )
+emily_profile.photo.attach(io: sixteen, filename: "test")
 dr_emily = Doctor.new(user: emily, clinic: london_bridge_hospital)
 emily.save!
 emily_profile.save!
@@ -878,7 +926,7 @@ nathaniel_profile = Profile.new(
   dob: Date.new(1981, 5, 15),
   user: nathaniel
 )
-
+nathaniel_profile.photo.attach(io: seventeen, filename: "test")
 dr_nathaniel = Doctor.new(
   user: nathaniel,
   clinic: london_bridge_hospital
@@ -940,6 +988,7 @@ krzysztof_profile = Profile.new(
   dob: Date.new(1974, 10, 2),
   user: krzysztof
 )
+krzysztof_profile.photo.attach(io: eighteen, filename: "test")
 dr_krzysztof = Doctor.new(user: krzysztof, clinic: centrum_medyczne_nowa_zdrowie)
 krzysztof.save!
 krzysztof_profile.save!
@@ -988,6 +1037,7 @@ laurent_profile = Profile.new(
   dob: Date.new(1981, 9, 18),
   user: laurent
 )
+laurent_profile.photo.attach(io: nineteen, filename: "test")
 dr_laurent = Doctor.new(user: laurent, clinic: cabinet_medical_parc)
 laurent.save!
 laurent_profile.save!
@@ -1045,6 +1095,7 @@ matteo_profile = Profile.new(
   dob: Date.new(1978, 4, 10),
   user: matteo
 )
+matteo_profile.photo.attach(io: twenty, filename: "test")
 dr_matteo = Doctor.new(user: matteo, clinic: clinica_santa_chiara_torino)
 matteo.save!
 matteo_profile.save!
@@ -1093,6 +1144,7 @@ anna_profile = Profile.new(
   dob: Date.new(1984, 11, 1),
   user: anna
 )
+anna_profile.photo.attach(io: twentyone, filename: "test")
 dr_anna = Doctor.new(user: anna, clinic: hausaerztezentrum_koeln)
 anna.save!
 anna_profile.save!
@@ -1141,6 +1193,7 @@ jan_profile = Profile.new(
   dob: Date.new(1975, 7, 8),
   user: jan
 )
+jan_profile.photo.attach(io: twentytwo, filename: "test")
 dr_jan = Doctor.new(user: jan, clinic: prahamed_specialist_center)
 jan.save!
 jan_profile.save!
@@ -1189,6 +1242,7 @@ alejandro_profile = Profile.new(
   dob: Date.new(1980, 5, 30),
   user: alejandro
 )
+alejandro_profile.photo.attach(io: twentythree, filename: "test")
 dr_alejandro = Doctor.new(user: alejandro, clinic: centro_medico_la_barceloneta)
 alejandro.save!
 alejandro_profile.save!
@@ -1237,6 +1291,7 @@ lucien_profile = Profile.new(
   dob: Date.new(1978, 6, 23),
   user: lucien
 )
+lucien_profile.photo.attach(io: twentyfour, filename: "test")
 dr_lucien = Doctor.new(user: lucien, clinic: clinique_du_canal_saintmartin)
 lucien.save!
 lucien_profile.save!
@@ -1285,6 +1340,7 @@ isabella_profile = Profile.new(
   dob: Date.new(1985, 2, 12),
   user: isabella
 )
+isabella_profile.photo.attach(io: twentyfive, filename: "test")
 dr_isabella = Doctor.new(user: isabella, clinic: centro_medico_firenze)
 isabella.save!
 isabella_profile.save!
@@ -1333,6 +1389,7 @@ emma_profile = Profile.new(
   dob: Date.new(1982, 9, 4),
   user: emma
 )
+emma_profile.photo.attach(io: twentysix, filename: "test")
 dr_emma = Doctor.new(user: emma, clinic: medpoint_antwerpen)
 emma.save!
 emma_profile.save!
@@ -1382,6 +1439,7 @@ matthias_profile = Profile.new(
   dob: Date.new(1973, 1, 15),
   user: matthias
 )
+matthias_profile.photo.attach(io: twentyseven, filename: "test")
 dr_matthias = Doctor.new(user: matthias, clinic: klinik_am_schlossgarten)
 matthias.save!
 matthias_profile.save!

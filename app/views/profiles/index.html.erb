@@ -10,7 +10,7 @@
 
       <div class="profile-display-picture">
         <% if current_user.profile.present? && current_user.profile.photo.attached? %>
-          <%= cl_image_tag current_user.profile.photo.key, class: "img-fluid rounded" %>
+          <%= cl_image_tag @profile.photo.key, class: "img-fluid rounded" %>
         <% else %>
           <%= image_tag "pp.png", class: "img-fluid rounded" %>
         <% end %>

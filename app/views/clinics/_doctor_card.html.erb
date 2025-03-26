@@ -8,6 +8,10 @@
           <p>Dr. <%= profile.first_name %> <%= profile.last_name %></p>
         </div>
         <div class="doctor-flex-pic">
+          <%= cl_image_tag profile.photo.key, transformation: [
+            {aspect_ratio: "1:1", gravity: "auto", width: 90, crop: "auto"},
+            {radius: "16:6:16:6"}
+          ] %>
         </div>
 
       </div>
