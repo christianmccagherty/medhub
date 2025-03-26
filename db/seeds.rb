@@ -1,4 +1,5 @@
 require "open-uri"
+puts "parsing through doctor image urls, might take a while"
 one = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939323/vaibhav-vivian-3HIroMoyre8-unsplash_qztvmm.jpg").open
 two = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939320/pexels-tima-miroshnichenko-6234600_bo7rvc.jpg").open
 three = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939318/pexels-tima-miroshnichenko-5452292_l1xrhl.jpg").open
@@ -10,6 +11,7 @@ eight = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321
 nine = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939317/pexels-thirdman-5327914_hh3zsf.jpg").open
 ten = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939321/pexels-yasinaydin-15752232_t1xwd0.jpg").open
 eleven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939310/pexels-nuptune-7966285_cefekh.jpg").open
+puts "halfway through..."
 twelve = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939308/pexels-jayrinho-15960478_qepzjk.jpg").open
 thirteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939317/pexels-tima-miroshnichenko-5452195_rg9xul.jpg").open
 fourteen = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939322/usman-yousaf-pTrhfmj2jDA-unsplash_uq00qj.jpg").open
@@ -23,9 +25,11 @@ twentyone = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v174293
 twentytwo = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939313/pexels-rdne-6129497_ckv34h.jpg").open
 twentythree = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939301/pexels-648298123-20894637_ajov6o.jpg").open
 twentyfour = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939298/gc_k9t0zz.jpg").open
+puts "almost...."
 twentyfive = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939298/humberto-chavez-FVh_yqLR9eA-unsplash_jdulnv.jpg").open
 twentysix = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939297/bermix-studio-ODM_VsTM2QQ-unsplash_pvtsap.jpg").open
 twentyseven = URI.parse("https://res.cloudinary.com/dhkgvouv7/image/upload/v1742939296/anna-keibalo-9vH-wWpUP3g-unsplash_dk3tku.jpg").open
+
 
 
 puts "Cleaning up database..."
