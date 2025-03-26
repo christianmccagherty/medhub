@@ -52,7 +52,12 @@ class Doctor < ApplicationRecord
     response = client.embeddings(
       parameters: {
         model: 'text-embedding-3-small',
-        input: "Doctor: #{full_name}. Specialty: #{}. Language: #{languages.pluck(:name).join(" ")}. Address: #{address}"
+        input:
+          "Doctor: #{full_name}.
+          Specialty: #{specialties.pluck(:name).join(" ")}.
+          Language: #{languages.pluck(:name).join(" ")}.
+          Address: #{address}.
+          Clinic: #{clinic}"
       }
     )
     embedding = response['data'][0]['embedding']
