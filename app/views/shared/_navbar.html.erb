@@ -25,7 +25,11 @@
           <% if current_user.profile.nil? || current_user.profile.photo.key.nil? %>
             <%= image_tag "https://lh5.googleusercontent.com/proxy/_mgqzbzZ7F7lGFeOL9srAsh5JLbiCUPM2NhUAw_3eTTKBvkDRatZe7gPDQtN8-x0orMUakl6gDsBMN0Y854rCN5UAupuGAi7BDB8VUsgi6gGLBRKigYCTkvdCdMXfA", class: "avatar", alt: "User menu" %>
           <% else %>
-            <%= cl_image_tag current_user.profile.photo.key, class: "avatar", alt: "dropdown menu" %>
+            <%= cl_image_tag current_user.profile.photo.key,
+              transformation: [
+                {gravity: "auto", crop: "auto"}
+              ],
+              class: "avatar", alt: "dropdown menu" %>
           <% end %>
         </a>
 
