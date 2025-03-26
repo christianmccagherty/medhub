@@ -1,6 +1,12 @@
 <div class="col-md-4 mb-4">
   <div class="doctor-card card shadow-sm">
-    <img src="https://placekitten.com/400/300" class="card-img-top doctor-image" alt="Doctor Image">
+    <% if @results.first.user.profile.photo.attached? %>
+      <%= cl_image_tag doctor.user.profile.photo.key, transformation: [
+              { aspect_ration: "1:1", gravity: "auto", crop: "auto" }
+            ] %>
+    <% else %>
+      <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
+    <% end %>
     <div class="card-body">
       <h5 class="doctor-name">
         Dr. <%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %>
