@@ -1,24 +1,23 @@
 <h1 class="text-center my-4">Find a Doctor</h1>
 
 <div class="container">
-  <div class="row">
-    <% @doctors.each do |doctor| %>
+  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+      <% @doctors.each do |doctor| %>
       <div class="col-md-4">
         <div class="doctor-card card shadow-sm">
-          <% if @doctor.user.profile.photo.attached? %>
-            <%= cl_image_tag doctor.user.profile.photo.key, transformation: [
-                    { gravity: "auto", crop: "auto" }
-                  ] %>
+          <% if doctor.user.profile.photo.attached? %>
+            <%= cl_image_tag doctor.user.profile.photo.key, width: 250, height: 250, crop: "fill", gravity: "auto", class: "card-img-top rounded" %>
           <% else %>
-            <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
+            <%= image_tag "pp.png", width: 250, height: 250, class: "card-img-top rounded", alt: "No photo available" %>
           <% end %>
+
           <div class="card-body">
             <h5 class="doctor-name"><%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %></h5>
             <p class="text-muted"><strong>Specialty:</strong> Radiology</p>
             <p class="text-muted"><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
-              <% unless doctor.average_doctor_rating == "unrated" %>
-                <p class="text-muted">Patient satisfaction - <%= doctor.average_doctor_rating %>/5 </p>
-              <% end %>
+            <% unless doctor.average_doctor_rating == "unrated" %>
+              <p class="text-muted">Patient satisfaction - <%= doctor.average_doctor_rating %>/5 </p>
+            <% end %>
             <a href="<%= doctor_path(doctor) %>" class="btn btn-primary">View Profile</a>
           </div>
         </div>

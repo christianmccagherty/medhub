@@ -3,23 +3,21 @@
   <div class="doctor-card-container">
     <%= link_to doctor_path(doctor) do %>
       <div class="doctor-flex-container">
-
         <div class="doctor-flex-info">
           <p>Dr. <%= profile.first_name %> <%= profile.last_name %></p>
         </div>
         <div class="doctor-flex-pic">
-          <%= cl_image_tag profile.photo.key, transformation: [
-            {aspect_ratio: "1:1", gravity: "auto", width: 90, crop: "auto"},
-            {radius: "16:6:16:6"}
-          ] %>
+          <% if profile.photo.attached? %>
+            <%= cl_image_tag profile.photo.key, width: 90, height: 90, crop: "fill", gravity: "auto", class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag "pp.png", width: 90, height: 90, class: "rounded-circle", alt: "No photo available" %>
+          <% end %>
         </div>
-
       </div>
 
       <div class="doctor-card-specialty">
         <p>Specialty: <%= doctor.specialties.first.name %></p>
       </div>
-
     <% end %>
   </div>
 <% end %>
