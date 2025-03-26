@@ -8,15 +8,16 @@ class SearchController < ApplicationController
     user_language_ids = Language.all.pluck(:id) if user_language_ids.empty?
 
     if search_type == 'clinics'
-      @results = Clinic.joins(doctors: [:specialties, { doctor_languages: :language }])
-                       .where(doctor_languages: { language_id: user_language_ids })
-                       .where('LOWER(clinics.name) LIKE :q OR LOWER(specialties.name) LIKE :q', q: "%#{query}%")
-                       .distinct
-                       .page(params[:page])
-                       .per(9)
+      @results = Clinic.joins(doctors: [:specialties, { doctor_languages: :language }, { specialties: :diseases }])
+                 .where(doctor_languages: { language_id: user_language_ids })
+                 .where('LOWER(clinics.name) LIKE :q OR LOWER(specialties.name) LIKE :q OR LOWER(diseases.name) LIKE :q', q: "%#{query}%")
+                 .distinct
+                 .page(params[:page])
+                 .per(9)
 
     elsif search_type == 'doctors'
-      @results = Doctor.joins(:user, :profile, :specialties, doctor_languages: :language)
+      @results = Doctor.joins(user: :profile)
+                 .joins(:specialties, doctor_languages: :language)
                  .joins(specialties: :diseases)
                  .where(doctor_languages: { language_id: user_language_ids })
                  .where(
