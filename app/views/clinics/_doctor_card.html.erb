@@ -1,5 +1,5 @@
 <% @clinic.doctors.each do |doctor| %>
-  <% profile = Profile.find(doctor.user_id) %>
+  <% profile = doctor.user.profile %>
   <div class="doctor-card-container">
     <%= link_to doctor_path(doctor) do %>
       <div class="doctor-flex-container">
@@ -8,12 +8,16 @@
           <p>Dr. <%= profile.first_name %> <%= profile.last_name %></p>
         </div>
         <div class="doctor-flex-pic">
+          <%= cl_image_tag profile.photo.key, transformation: [
+            {aspect_ratio: "1:1", gravity: "auto", width: 90, crop: "auto"},
+            {radius: "16:6:16:6"}
+          ] %>
         </div>
 
       </div>
 
       <div class="doctor-card-specialty">
-        <p>Specialty:</p>
+        <p>Specialty: <%= doctor.specialties.first.name %></p>
       </div>
 
     <% end %>
