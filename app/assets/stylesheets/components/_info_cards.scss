@@ -53,6 +53,8 @@
   }
 
   p {
+    color: rgb(255, 255, 255);
+    font-family: $body-font;
     margin-left: 100px;
     margin-bottom: 5px;
     margin-top: 10px;
@@ -62,6 +64,10 @@
     font-style: normal;
     font-variation-settings:
       "wdth" 100;
+  }
+
+  .intro-description {
+    width: 85%;
   }
 }
 

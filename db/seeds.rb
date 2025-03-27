@@ -85,7 +85,7 @@ specialties = [
   "Psychiatry", "Orthopedics", "Gastroenterology", "Endocrinology", "Pulmonology",
   "Urology", "Nephrology", "Ophthalmology", "Otolaryngology (ENT)", "Rheumatology",
   "Oncology", "Hematology", "Allergy and Immunology", "Geriatrics",
-  "Obstetrics and Gynecology", "Dentistry", "Radiology", "Surgery", "Sports Medicine",
+  "Gynecology", "Dentistry", "Radiology", "Surgery", "Sports Medicine",
   "Infectious Diseases"
 ]
 
@@ -917,7 +917,7 @@ emily_profile.photo.attach(io: sixteen, filename: "test")
 dr_emily = Doctor.new(user: emily, clinic: london_bridge_hospital)
 emily.save!
 emily_profile.save!
-dr_emily.specialties << Specialty.find_by(name: "Obstetrics and Gynecology")
+dr_emily.specialties << Specialty.find_by(name: "Gynecology")
 Review.create!(
   rating: 5,
   content: "She made me feel completely at ease.",
