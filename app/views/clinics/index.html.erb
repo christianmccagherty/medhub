@@ -1,7 +1,7 @@
 <h1 class="text-center my-4">Find a Clinic</h1>
 
 <div class="container">
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
     <% @clinics.each do |clinic| %>
       <div class="col-md-4">
         <%= link_to clinic_path(clinic) do %>

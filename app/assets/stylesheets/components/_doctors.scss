@@ -19,35 +19,45 @@ h1, h2, h3 {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  margin-bottom: 24px;
-  // height: 100px
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // makes sure content stays pushed apart
+  height: 100%; // ensure card takes full height inside grid
 
+  img.doctor-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  // start from top
+    padding: 12px;
 
-  img {
-    // height: 300px;
-    width: 92%;
-    margin: auto;
-    margin-top: 10px;
-    border-radius: 10px 10px 0 0;
+    p, .doctor-name {
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
   }
 
-  &:hover {
+  .doctor-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .doctor-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-bottom: 4px solid $accent-color;
-  }
-
   .doctor-name {
     color: $primary-color;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
   }
+
 
   .btn-primary {
     background-color: $primary-color;
@@ -64,21 +74,24 @@ h1, h2, h3 {
   margin-top: 20px;
 
   img {
-    border-radius: 100%;
     width: 300px;
-  }
-
-  .profile-img {
-    width: 150px;
-    height: 150px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
     border: 5px solid $secondary-color;
+    display: block;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); // subtle depth
   }
 
   .doctor-name {
     font-size: 2rem;
     font-weight: bold;
+    margin-bottom: 10px;
   }
 }
+
+
 
 .info-section {
   margin-top: 20px;
@@ -110,4 +123,27 @@ h1, h2, h3 {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+}
+
+.doctor-link {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.clinic-link {
+  color: $accent-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.specialty {
+  color: #6c757d; // Bootstrap gray-600
+  font-style: italic;
 }
