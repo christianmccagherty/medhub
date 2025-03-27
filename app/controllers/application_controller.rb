@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
   private
 
   def set_questions_and_question
-    @questions = current_user.questions
-    @question = Question.new
+    if user_signed_in?
+      @questions = current_user.questions
+      @question = Question.new
+    end
   end
 
 end

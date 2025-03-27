@@ -22,8 +22,10 @@
         </main>
 
       </div>
-      <%= render "questions/index", :locals => { :@questions => current_user.questions, :@questions => Question.new } %>
+      <% if user_signed_in? && params[:controller] != "appointments" %>
+        <%= render "questions/index", :locals => { :@questions => current_user.questions, :@questions => Question.new } %>
+      <% end %>
     </div>
-        
+
   </body>
 </html>
