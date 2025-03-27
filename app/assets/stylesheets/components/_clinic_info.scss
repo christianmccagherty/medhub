@@ -5,17 +5,6 @@
   transition: transform 0.3s ease-in-out;
   width: 300px;
 
-.clinic-card-container {  //might be the problem
-  border-radius: 32px;
-  width: 80%;
-  margin: auto;
-  margin-top: 100px;
-  min-height: 600px;   //until here
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 
   img.clinic-image {
     width: 100%;
@@ -49,14 +38,8 @@
       vertical-align: middle;
       margin-right: 4px;
     }
-//from here
-  .clinic-card-flex {
-    height: 250px;
-    // display: flex;
-    // justify-content: space-between;
-    // margin-top: 100px;
   }
-//to here
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -111,19 +94,5 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-//end-master start
-.info-3 {
-  margin-top: 90px;
-  width: 95%;
-  margin-left: 5%;
 
-  p {
-    margin: 0;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-  }
-//master end
 }

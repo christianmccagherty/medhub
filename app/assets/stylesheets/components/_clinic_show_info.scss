@@ -1,0 +1,91 @@
+.clinic-card-container {
+  background: rgb(255, 251, 243);
+  // background: linear-gradient(158deg, rgba(251,248,239,1) 25%, rgba(255,231,189,1) 100%);
+  box-shadow: 0 0 10px lightgray;
+  border-radius: 32px;
+  width: 80%;
+  margin: auto;
+  margin-top: 100px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+
+  .clinic-card-info {
+    margin-left: 60px;
+    margin-top: 60px;
+  }
+
+  h1 {
+    font-size: 60px;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    margin-bottom: 50px;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  .clinic-card-flex {
+    height: 250px;
+    // display: flex;
+    // justify-content: space-between;
+    // margin-top: 100px;
+  }
+
+  .clinic-card-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .clinic-card-image {
+    margin-right: 50px;
+    // mix-blend-mode: luminosity;
+    background-image: asset_url("doctor2");
+    background-size: cover;
+    // background-position: center;
+    width: 350px;
+    height: 300px;
+  }
+
+  .clinic-card-socials {
+    margin: 20px;
+
+    i {
+      font-size: 42px;
+      margin: 30px;
+    }
+  }
+}
+
+.clinic-show-banner {
+  margin-top: 100px;
+  img {
+    width: 100%;
+    height: 900px;
+  }
+}
+
+.info-3 {
+  margin-top: 90px;
+  width: 95%;
+  margin-left: 5%;
+
+  p {
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
