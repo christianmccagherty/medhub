@@ -20,7 +20,9 @@ module ApplicationHelper
     'finnish' => 'fi',
     'greek' => 'gr',
     'czech' => 'cz',
-    'hungarian' => 'hu'
+    'hungarian' => 'hu',
+    'hindi' => 'in',
+    'mandarin' => 'cn',
   }.freeze
 
   def language_flag(language_name)

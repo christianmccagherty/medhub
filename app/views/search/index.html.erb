@@ -9,7 +9,7 @@
 <% else %>
   <p class="text-center mt-2">
     Showing all <strong><%= params[:search_type].capitalize %></strong> in
-    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>.
+    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>
   </p>
 <% end %>
 
@@ -36,4 +36,3 @@
 <% else %>
   <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
 <% end %>
-
