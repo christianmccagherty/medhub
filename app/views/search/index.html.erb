@@ -1,13 +1,7 @@
 
 <h1 class="text-center my-4">Search Results</h1>
 
-<p class=" text-center mt-2">
-  <% if params[:query].present? %>
-    Showing results for "<strong><%= params[:query] %></strong>" in <strong><%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ") %></strong>.
 
-  <% else %>
-    <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
-  <% end %>
 
 
 <% if @results.any? %>
@@ -33,4 +27,3 @@
 <% else %>
   <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
 <% end %>
-
