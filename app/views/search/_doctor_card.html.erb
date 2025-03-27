@@ -25,6 +25,7 @@
       <% else %>
         <p>No clinic assigned</p>
       <% end %>
+      <%= render_stars(doctor.average_doctor_rating.to_f) %>
 
       <div class="mb-2">
         <% doctor.languages.each do |language| %>

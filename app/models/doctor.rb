@@ -20,6 +20,8 @@ class Doctor < ApplicationRecord
     rating.nil? ? "unrated" : rating
   end
 
+
+
   def generate_available_slots(days_ahead = 14)
     return [] unless schedule
 

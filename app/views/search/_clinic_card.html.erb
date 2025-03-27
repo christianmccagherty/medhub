@@ -1,24 +1,39 @@
-<div class="col-md-4">
-  <%= link_to clinic_path(clinic) do %>
-    <div class="doctor-card card shadow-sm">
-      <% if clinic.photo.attached? %>
-        <%= cl_image_tag clinic.photo.key, transformation: [
-                { aspect_ration: "1:1", gravity: "auto", crop: "auto" }
-              ] %>
-      <% else %>
-        <img src="https://media.doctolib.com/image/upload/q_auto:eco,f_auto,w_1024,h_700,c_limit/mjjirub3lezeoxmzbqsv.jpg" class="profile-img rounded-circle" alt="Doctor Image">
-      <% end %>
-      <div class="card-body">
-        <h2 class="h5 font-weight-bold" style="font-family: Quicksand, sans-serif;"><%= clinic.name %></h2>
-        <p class="text-muted" style="font-family: Noto Serif, serif;"><strong>Address:</strong> <%= clinic.address %></p>
-        <p class="text-muted" style="font-family: Noto Serif, serif;"> <%= clinic.doctors.map(&:specialties).flatten.uniq.map(&:name).join(', ') %></p>
-      <div class="mb-2">
-        <% clinic.doctors.joins(:languages).distinct.flat_map(&:languages).uniq.each do |language| %>
-          <span class="me-1"><%= language_flag(language.name) %></span>
-        <% end %>
-      </div>
+<div class="col d-flex justify-content-center">
+  <div class="clinic-card card shadow-sm">
+    <% if clinic.photo.attached? %>
+      <%= cl_image_tag clinic.photo.key,
+            width: 300,
+            height: 300,
+            crop: "thumb",
+            gravity: "center",
+            fetch_format: :auto,
+            quality: "auto:best",
+            class: "clinic-image" %>
+    <% else %>
+      <%= image_tag "clinic-placeholder.jpg", width: 300, height: 300, class: "clinic-image", alt: "Clinic image" %>
+    <% end %>
 
-      </div>
+    <div class="card-body">
+      <h5 class="clinic-name">
+        <%= link_to clinic.name, clinic_path(clinic), class: "clinic-link" %>
+      </h5>
+
+
+      <p class="text-muted"><%= clinic.address %></p>
+
+      <% unless clinic.average_clinic_rating == "unrated" %>
+        <%= render_stars(clinic.average_clinic_rating.to_f) %>
+      <% end %>
+
+
+      <% languages = clinic.doctors.map(&:languages).flatten.uniq %>
+      <% if languages.any? %>
+        <div class="mb-2">
+          <% languages.each do |language| %>
+            <span class="me-1"><%= language_flag(language.name) %></span>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

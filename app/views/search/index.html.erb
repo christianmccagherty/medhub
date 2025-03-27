@@ -1,12 +1,25 @@
 
 <h1 class="text-center my-4">Search Results</h1>
 
+<!-- obenstart -->
+<% if params[:query].present? %>
+  <p class="text-center mt-2">
+    Showing results for "<strong><%= params[:query] %></strong>" in
+    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>.
+  </p>
+<% else %>
+  <p class="text-center mt-2">
+    Showing all <strong><%= params[:search_type].capitalize %></strong> in
+    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>
+  </p>
+<% end %>
 
-
+<!-- //master might have deleted, check if fails
+ -->
 
 <% if @results.any? %>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-stretch">
       <% @results.each do |result| %>
         <% if result.is_a?(Clinic) %>
           <%= render partial: "search/clinic_card", locals: { clinic: result } %>
@@ -21,7 +34,7 @@
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-      <%= link_to 'Back to search', root_path, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Back to search', root_path, class: 'btn btn-primary mt-4 rounded-pill', style: 'background-color: #FFB433; border: none; color: white;' %>
     </div>
   </div>
 <% else %>
