@@ -14,7 +14,7 @@
           <% end %>
           <div class="card-body">
             <h5 class="doctor-name"><%= doctor.user.profile.first_name %> <%= doctor.user.profile.last_name %></h5>
-            <p class="text-muted"><strong>Specialty:</strong> Radiology</p>
+            <p class="text-muted"><strong>Specialty:</strong> <%= doctor.specialty %></p>
             <p class="text-muted"><strong>Clinic:</strong> <%= doctor.clinic.present? ? doctor.clinic.name : "No clinic assigned" %></p>
               <% unless doctor.average_doctor_rating == "unrated" %>
                 <p class="text-muted">Patient satisfaction - <%= doctor.average_doctor_rating %>/5 </p>
