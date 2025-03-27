@@ -64,6 +64,7 @@ Disease.destroy_all
 Specialty.destroy_all
 ProfileLanguage.destroy_all
 DoctorLanguage.destroy_all
+Question.destroy_all
 Language.destroy_all
 Doctor.destroy_all
 Clinic.destroy_all
