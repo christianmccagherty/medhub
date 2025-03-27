@@ -1,11 +1,13 @@
 .profile-card-container {
-  // background: rgb(255, 251, 243);  // Optional: can keep for background color
-  border: 1px solid black;
+  background: rgb(255, 251, 243);
+  // background: linear-gradient(158deg, rgba(251,248,239,1) 25%, rgba(255,231,189,1) 100%);
+  box-shadow: 0 0 10px lightgray;
   border-radius: 32px;
-  width: 95%;
+  width: 75%;
   margin: auto;
   margin-top: 100px;
   min-height: 600px;
+
 
   .profile-card-flex {
     margin: 10px;
@@ -16,7 +18,7 @@
 
   .profile-card-info {
     width: 50%; // Adjusted for content
-    padding: 10px; // Added padding for better spacing
+    padding: 24px; // Added padding for better spacing
   }
 
   .profile-display-picture {
@@ -31,6 +33,15 @@
       height: auto;
       border-radius: 32px; // Rounded corners for the image
       object-fit: cover;  // Ensures no stretching and maintains aspect ratio
+    }
+  }
+
+  .profile-card-socials {
+    padding: 24px;
+
+    i {
+      font-size: 42px;
+      margin: 8px;
     }
   }
 
@@ -75,4 +86,34 @@ input[type="checkbox"] {
 
 .form-actions {
   margin-bottom: 30px;
+}
+
+.btn-primary {
+  border: 1px solid $primary-color;
+  border-radius: 20px;
+  padding: 6px 20px;
+  background-color: transparent;
+  color: $primary-color;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.btn-accent {
+  border: 1px solid $accent-color;
+  border-radius: 20px;
+  padding: 6px 20px;
+  background-color: transparent;
+  color: $accent-color;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $accent-color;
+    color: white;
+  }
 }
