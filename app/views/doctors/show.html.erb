@@ -20,7 +20,7 @@
     <h3>Clinics</h3>
     <% if @doctor.clinic.present? %>
       <ul>
-        <li><%= @doctor.clinic.name %> - <%= @doctor.clinic.address %></li>
+        <li><%= link_to @doctor.clinic.name, clinic_path(@doctor.clinic) %> - <%= @doctor.clinic.address %></li>
       </ul>
     <% else %>
       <p>This doctor is not assigned to any clinic.</p>

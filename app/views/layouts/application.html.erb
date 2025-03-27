@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/confetti.css">
   </head>
 
-  <body class="d-flex flex-column min-vh-100">
-    <div class="page-divide-external">
+  <body class="d-flex flex-column min-vh-100" data-controller="hide">
+    <% if params[:controller] != "appointments" %>
+      <div class="page-divide-external">
+    <% else %>
+      <div>
+    <% end %>
       <div class="page-divide-internal">
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
@@ -22,8 +26,10 @@
         </main>
 
       </div>
-      <%= render "questions/index", :locals => { :@questions => current_user.questions, :@questions => Question.new } %>
+      <% if user_signed_in? && params[:controller] != "appointments" %>
+        <%= render "questions/index", :locals => { :@questions => current_user.questions, :@questions => Question.new } %>
+      <% end %>
     </div>
-        
+
   </body>
 </html>

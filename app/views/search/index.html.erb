@@ -1,6 +1,7 @@
 
 <h1 class="text-center my-4">Search Results</h1>
 
+<!-- obenstart -->
 <% if params[:query].present? %>
   <p class="text-center mt-2">
     Showing results for "<strong><%= params[:query] %></strong>" in
@@ -12,6 +13,9 @@
     <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>
   </p>
 <% end %>
+
+<!-- //master might have deleted, check if fails
+ -->
 
 <% if @results.any? %>
   <div class="container">

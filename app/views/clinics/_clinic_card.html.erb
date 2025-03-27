@@ -11,10 +11,7 @@
 
     <div class="clinic-card-info">
       <h1><%= @clinic.name %></h1>
-      <h3><i class="fa-solid fa-location-dot"></i> <%= @clinic.address %></h3>
-      <h3>Something here about specialty</h3>
-      <h3>Fortis Fortuna Adiuvat</h3>
-      <h3>Something here about specialty</h3>
+      <h4><i class="fa-solid fa-location-dot"></i> <%= @clinic.address %></h4>
       <% unless @clinic.average_clinic_rating == "unrated" %>
         <p class="text-muted">Patient satisfaction - <%= @clinic.average_clinic_rating %>/5 </p>
       <% end %>
@@ -22,14 +19,7 @@
   </div>
 
   <div class="clinic-card-extras">
-    <div class="clinic-card-socials">
-      <i class="fa-brands fa-facebook"></i>
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-linkedin"></i>
-      <i class="fab fa-twitter"></i>
-      <i class="fab fa-github"></i>
-    </div>
-    <div class="clinic-card-image"></div>
+      <%= render "map_card" %>
   </div>
 
 </div>
