@@ -5,7 +5,7 @@
 <% if params[:query].present? %>
   <p class="text-center mt-2">
     Showing results for "<strong><%= params[:query] %></strong>" in
-    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>.
+    <%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ").html_safe %>
   </p>
 <% else %>
   <p class="text-center mt-2">
