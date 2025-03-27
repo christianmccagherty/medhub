@@ -12,13 +12,18 @@
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
+    <div class="page-divide-external">
+      <div class="page-divide-internal">
+        <%= render "shared/navbar" %>
+        <%= render "shared/flashes" %>
 
-    <main class="flex-fill">
-      <%= yield %>
-    </main>
+        <main class="flex-fill">
+          <%= yield %>
+        </main>
 
-    <%= render "shared/footer" %>
+      </div>
+      <%= render "questions/index", :locals => { :@questions => current_user.questions, :@questions => Question.new } %>
+    </div>
+        
   </body>
 </html>

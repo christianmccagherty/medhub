@@ -41,7 +41,7 @@ class Doctor < ApplicationRecord
       current_time = start_time
       while current_time < end_time
         slots << current_time
-        current_time = current_time + 30.minutes
+        current_time += 30.minutes
       end
     end
 

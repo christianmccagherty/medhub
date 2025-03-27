@@ -7,7 +7,10 @@
     <% end %>
 
     <h1 class="doctor-name"><%= @doctor.user.profile.first_name %> <%= @doctor.user.profile.last_name %></h1>
-    <p class="text-muted specialty">Radiology</p>
+
+    <p class="text-muted specialty"><%= @doctor.specialties.first.name %></p>
+
+
   </div>
 
   <div class="info-section">
@@ -31,7 +34,11 @@
 
   <div class="info-section">
     <h3>Doctor's Description</h3>
-    <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience in radiology, specializing in patient care and medical research.</p>
+    <% if @doctor.description.present? %>
+      <p><%= @doctor.description %></p>
+    <% else %>
+      <p>Dr. <%= @doctor.user.profile.last_name %> has over 10 years of experience, specializing in patient care and medical research.</p>
+    <% end %>
     <% unless @doctor.average_doctor_rating == "unrated" %>
       <p class="text-muted">Patient satisfaction - <%= @doctor.average_doctor_rating %>/5 </p>
     <% end %>

@@ -1,0 +1,23 @@
+.page-divide-external {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: 100vh;
+  // position: relative;
+  // height: 100vh;
+  // top: 30%;
+  width: 100%;
+
+
+  > * {
+    overflow-y: auto;
+  }
+
+  > :first-child {
+    border-right: 1px solid #ccc;
+  }
+
+  > :last-child {
+    background-color: #f9f9f9;
+    // padding: 1em;
+  }
+}

@@ -1,0 +1,61 @@
+.collapsable-container {
+  position: relative;
+  // position: sticky;
+  // z-index: 1000;
+  // top: 80%;
+  // left: 100%;
+  // bottom: 100%;
+  width: 628px;
+  margin-left: 628px;
+  // margin-bottom: 50px;
+  button {
+    width: 25%;
+    // margin: auto;
+    margin-left: 65%;
+    // position: sticky;
+    // top: 0%;
+    // text-align: end;
+  }
+
+  // .small-collapse {
+  //   width: 200px;
+  //   position: sticky;
+  //   // top: 0;
+  //   // bottom: 100%;
+
+  // }
+
+  // .buttone {
+  //   position: sticky;
+  //   top: 90%;
+  //   left: 90%;
+  // }
+
+}
+
+.collapsable-container-open {
+  // position: sticky;
+  // z-index: 1000;
+  // top: 0%;
+  // left: 100%;
+  width: 628px;
+  // margin-bottom: 50px;
+  margin-left: 628px;
+
+  button {
+    width: 25%;
+    // margin: auto;
+    margin-left: 65%;
+
+  }
+
+}
+
+.teste {
+  height: 2000px;
+  width: 200px;
+  border: 2px solid black;
+}
+
+// all pages same height
+// content overflow: scroll
