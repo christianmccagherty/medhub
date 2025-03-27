@@ -1,12 +1,14 @@
+
 <h1 class="text-center my-4">Search Results</h1>
 
 <p class=" text-center mt-2">
   <% if params[:query].present? %>
     Showing results for "<strong><%= params[:query] %></strong>" in <strong><%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ") %></strong>.
+
   <% else %>
-    Showing all <strong><%= params[:search_type].capitalize %></strong> in <strong><%= current_user.profile.languages.map { |l| language_flag(l.name) }.join(" ") %></strong>.
+    <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
   <% end %>
-</p>
+
 
 <% if @results.any? %>
   <div class="container">
@@ -31,3 +33,4 @@
 <% else %>
   <p class="text-center mt-5">No results found for "<%= params[:query] %>".</p>
 <% end %>
+

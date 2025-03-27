@@ -1,20 +1,32 @@
-<div class="container">
-  <h1 class="homepage-header">Find your doctor or clinic</h1>
-</div>
+<div class="banner">
+  <div class="container">
+    <h1>Welcome to <strong>MedHub</strong></h1>
+    <p>Your Trusted Healthcare Companion</p>
+    <div class="search-container d-flex justify-content-center">
+      <%= form_with url: search_path, method: :get, local: true, class: "d-flex align-items-center gap-2" do |form| %>
+        <%= form.text_field :query, placeholder: "Search by disease or specialty...", value: params[:query], class: "form-control me-2" %>
 
-<div class="search-container d-flex justify-content-center mt-5">
-  <%= form_with url: search_path, method: :get, local: true, class: "d-flex align-items-center gap-2" do |form| %>
-    <%= form.text_field :query, placeholder: "Search by disease or specialty...", value: params[:query], class: "form-control me-2" %>
+        <div class="search-type-switch">
+          <%= form.hidden_field :search_type, value: (params[:search_type] || 'doctors'), id: "searchTypeInput" %>
+          <button type="button" class="switch-btn" id="doctorsBtn">Doctors</button>
+          <button type="button" class="switch-btn" id="clinicsBtn">Clinics</button>
+        </div>
 
-    <div class="search-type-switch">
-      <%= form.hidden_field :search_type, value: (params[:search_type] || 'doctors'), id: "searchTypeInput" %>
-      <button type="button" class="switch-btn" id="doctorsBtn">Doctors</button>
-      <button type="button" class="switch-btn" id="clinicsBtn">Clinics</button>
+        <%= form.submit "Search", class: "btn btn-success" %>
+      <% end %>
     </div>
 
-    <%= form.submit "Search", class: "btn btn-success" %>
-  <% end %>
+    <div class="segment-one">
+      <h4>Your health, your way.<strong> MedHub</strong> connects you with top doctors and clinics,
+  making appointment booking seamless and stress-free.</h4>
+    </div>
+    <div class="segment-two">
+      <h4>Whether you need a routine check-up or specialized care,
+    we’ve got you covered.</h4>
+    </div>
+  </div>
 </div>
+
 
 
 <script>
