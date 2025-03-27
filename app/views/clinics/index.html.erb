@@ -5,7 +5,7 @@
     <% @clinics.each do |clinic| %>
       <div class="col-md-4">
         <%= link_to clinic_path(clinic) do %>
-          <div class="doctor-card card shadow-sm">
+          <div class="clinic-card card shadow-sm">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1pQB9NtSvgyPSxOBJf3KpihyyVtiTHzuFOg&s" class="card-img-top doctor-image" alt="Burger king">
             <div class="card-body">
               <h2 class="h5 font-weight-bold"><%= clinic.name %></h2>

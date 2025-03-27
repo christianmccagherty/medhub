@@ -15,9 +15,12 @@ class Doctor < ApplicationRecord
 
   def average_doctor_rating
     return "unrated" if reviews.size == 0
+
     rating = reviews.map(&:rating).sum / reviews.size
-    rating == nil ? "unrated" : rating
+    rating.nil? ? "unrated" : rating
   end
+
+
 
   def generate_available_slots(days_ahead = 14)
     return [] unless schedule
