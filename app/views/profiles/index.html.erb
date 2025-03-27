@@ -2,7 +2,7 @@
 
   <div class="profile-card-flex">
     <div class="profile-card-info">
-      <h1><i class="fa-solid fa-user"></i> <%= @profile.first_name %> <%= @profile.last_name %></h1>
+      <h1><i class="fa-solid fa-user"></i> <%= @profile.first_name%> <%= @profile.last_name %></h1>
       <h3><i class="fa-solid fa-location-dot"></i> <%= @profile.address %></h3>
       <h3><i class="fa-regular fa-calendar"></i> <%= @profile.dob.strftime('%B/%d/%Y') %> </h3>
     </div>
@@ -21,7 +21,7 @@
 
 
   <div class="profile-card-extras">
-    <div class="clinic-card-socials">
+    <div class="profile-card-socials">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-linkedin"></i>
@@ -40,8 +40,8 @@
 
 
 <div class="profile-options" data-controller="toggle">
-  <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary m-3" %>
-  <button class="btn btn-primary" data-action="click->toggle#fire">Edit Personal Details</button>
+  <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-accent m-3" %>
+  <button class="btn btn-accent" data-action="click->toggle#fire">Edit Personal Details</button>
 
   <div class="profile-form-container d-none" data-toggle-target="toggleableElement">
     <div class="profile-form-flex">
