@@ -28,9 +28,7 @@ if rails_env == "production"
   end
 end
 
-if ENV['RAILS_ENV'] == 'development'
-  plugin :solid_queue
-end
+plugin :solid_queue
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
